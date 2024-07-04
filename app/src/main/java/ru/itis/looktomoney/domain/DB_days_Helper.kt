@@ -48,12 +48,12 @@ class DB_days_Helper (
 
     }
 
-    private fun getAll(this_date: MyDate) : ArrayList<Change>{
+    fun getAll(this_date: MyDate) : ArrayList<Change>{
         val db = this.readableDatabase
         val values = db.rawQuery("SELECT * FROM days", null)
         var list : ArrayList<Change> = ArrayList()
         if (values.moveToFirst()){
-            while (values.moveToNext()){
+            do {
                 val date = values.getString(1)
                 if (!date.equals(this_date.toString())){
                     continue
@@ -63,6 +63,7 @@ class DB_days_Helper (
                 list = mapper.readValue(json)
                 break
             }
+            while (values.moveToNext())
         }
         values.close()
         db.close()

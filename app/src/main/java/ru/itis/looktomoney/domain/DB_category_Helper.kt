@@ -47,7 +47,7 @@ class DB_category_Helper(
         val values = db.rawQuery("SELECT * FROM categorys", null)
         val list : ArrayList<Category> = ArrayList()
         if (values.moveToFirst()){
-            while (values.moveToNext()){
+            do {
                 val type = values.getString(4)
                 if (!type.equals(str)){
                     continue
@@ -56,7 +56,7 @@ class DB_category_Helper(
                 val description = values.getString(2)
                 val icon = values.getString(3)
                 list.add(Category(name = name, description = description, icon = icon, type = type))
-            }
+            } while (values.moveToNext())
         }
         values.close()
         db.close()
