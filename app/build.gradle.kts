@@ -7,6 +7,10 @@ android {
     namespace = "ru.itis.looktomoney"
     compileSdk = 34
 
+    buildFeatures {
+        viewBinding = true
+    }
+
     defaultConfig {
         applicationId = "ru.itis.looktomoney"
         minSdk = 24
@@ -36,6 +40,8 @@ android {
 }
 
 dependencies {
+
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.9.7")
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
