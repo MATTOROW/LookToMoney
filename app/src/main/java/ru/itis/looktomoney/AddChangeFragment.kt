@@ -21,6 +21,7 @@ class AddChangeFragment : Fragment(R.layout.fragment_add_change){
 
     private var binding : FragmentAddChangeBinding? = null
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -35,23 +36,21 @@ class AddChangeFragment : Fragment(R.layout.fragment_add_change){
             val db_change = DB_days_Helper(this.root.context, null)
             val db_wallet = DB_wallet_Helper(this.root.context, null)
 
+            spinnerWallet.adapter = WalletSpinnerAdapter(requireContext(), db_wallet.getAll())
 
-            catSpinner.adapter = CategorySpinnerAdapter(this.root.context, ArrayList())
-
-            walletSpinner.adapter = WalletSpinnerAdapter(this.root.context, db_wallet.getAll())
 
             choiceInput.setOnClickListener{
                 polz_choice_type = 0
                 choiceInput.setTextColor(Color.GREEN)
                 choiceOutput.setTextColor(Color.RED)
-                catSpinner.adapter = CategorySpinnerAdapter(this.root.context, db_category.getAllIncomeCategorys())
+                spinnerCategory.adapter = CategorySpinnerAdapter(requireContext(), db_category.getAllIncomeCategorys())
             }
 
             choiceOutput.setOnClickListener{
                 polz_choice_type = 1
                 choiceInput.setTextColor(Color.RED)
                 choiceOutput.setTextColor(Color.GREEN)
-                catSpinner.adapter = CategorySpinnerAdapter(this.root.context, db_category.getAllOutcomeCategorys())
+                spinnerCategory.adapter = CategorySpinnerAdapter(requireContext(), db_category.getAllOutcomeCategorys())
             }
 
 
@@ -60,7 +59,7 @@ class AddChangeFragment : Fragment(R.layout.fragment_add_change){
                 var cat : Category? = null
                 var wallet : Wallet? = null
 
-                val itemSelectedListener: AdapterView.OnItemSelectedListener =
+                val catSelected: AdapterView.OnItemSelectedListener =
                     object : AdapterView.OnItemSelectedListener {
                         override fun onItemSelected(
                             parent: AdapterView<*>,
@@ -68,17 +67,18 @@ class AddChangeFragment : Fragment(R.layout.fragment_add_change){
                             position: Int,
                             id: Long
                         ) {
-                            val item : Category = catSpinner.adapter.getItem(position) as Category
+
+                            val item = parent.getItemAtPosition(position) as Category
                             cat = item
                         }
 
                         override fun onNothingSelected(parent: AdapterView<*>?) {
                         }
                     }
+                spinnerCategory.onItemSelectedListener = catSelected
 
-                catSpinner.onItemSelectedListener = itemSelectedListener
 
-                val itemSelectedListener_wal: AdapterView.OnItemSelectedListener =
+                val walletSelected: AdapterView.OnItemSelectedListener =
                     object : AdapterView.OnItemSelectedListener {
                         override fun onItemSelected(
                             parent: AdapterView<*>,
@@ -86,15 +86,16 @@ class AddChangeFragment : Fragment(R.layout.fragment_add_change){
                             position: Int,
                             id: Long
                         ) {
-                            val item : Wallet = walletSpinner.adapter.getItem(position) as Wallet
+
+                            val item = parent.getItemAtPosition(position) as Wallet
                             wallet = item
                         }
 
                         override fun onNothingSelected(parent: AdapterView<*>?) {
                         }
                     }
+                spinnerWallet.onItemSelectedListener = walletSelected
 
-                walletSpinner.onItemSelectedListener = itemSelectedListener_wal
 
                 var numb = -1
                 try {

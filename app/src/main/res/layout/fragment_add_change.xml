@@ -39,51 +39,31 @@
             android:textSize="22sp" />
     </LinearLayout>
 
-    <Spinner
-        android:id="@+id/cat_spinner"
-        android:layout_width="209dp"
-        android:layout_height="65dp"
-        android:layout_marginTop="52dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        tools:listitem="@layout/item_category" />
-
     <EditText
         android:id="@+id/polz_number"
         android:layout_width="223dp"
         android:layout_height="56dp"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="72dp"
         android:ems="10"
         android:hint="Введите сумму"
         android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cat_spinner" />
-
-    <Spinner
-        android:id="@+id/wallet_spinner"
-        android:layout_width="210dp"
-        android:layout_height="65dp"
-        android:layout_marginTop="52dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/polz_number"
-        tools:listitem="@layout/item_category" />
+        app:layout_constraintTop_toBottomOf="@+id/spinner_category" />
 
     <EditText
         android:id="@+id/polz_date"
         android:layout_width="221dp"
         android:layout_height="54dp"
-        android:layout_marginTop="68dp"
+        android:layout_marginTop="44dp"
         android:ems="10"
         android:gravity="center"
         android:hint="ДД.ММ.ГГГГ"
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/wallet_spinner" />
+        app:layout_constraintTop_toBottomOf="@+id/spinner_wallet" />
 
     <Button
         android:id="@+id/add_to_DataBase_button"
@@ -94,5 +74,27 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/polz_date" />
+
+    <Spinner
+        android:id="@+id/spinner_category"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="76dp"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        tools:listitem="@layout/item_category" />
+
+    <Spinner
+        android:id="@+id/spinner_wallet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/polz_number"
+        tools:listitem="@layout/item_wallet" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
