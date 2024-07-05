@@ -1,5 +1,6 @@
 package ru.itis.looktomoney.adapters
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -11,14 +12,9 @@ import ru.itis.looktomoney.R
 import ru.itis.looktomoney.domain.Category
 
 class CategorySpinnerAdapter(
-    val context: Context,
-    val list : ArrayList<Category>
+    private val context: Context,
+    private val list: ArrayList<Category>
 ) : BaseAdapter() {
-
-
-
-    private val layout_inflater : LayoutInflater = context.getSystemService((Context.LAYOUT_INFLATER_SERVICE)) as LayoutInflater
-
     override fun getCount(): Int {
         return list.size
     }
@@ -32,13 +28,20 @@ class CategorySpinnerAdapter(
     }
 
     override fun getView(p0: Int, p1: View?, p2: ViewGroup?): View {
-        val category = list[p0]
-        var view = layout_inflater.inflate(R.layout.item_category, p2)
+        val layout = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
 
+        var view : View = layout.inflate(R.layout.item_category,p2, false)
+
+        val category = getItem(p0) as Category
+
+
+        try{
+            view.findViewById<ImageView>(R.id.cat_image).setImageResource(category.icon)
+        } catch (_ : Exception){
+            view.findViewById<ImageView>(R.id.cat_image).setImageResource(R.drawable.ic_launcher_background)
+        }
         view.findViewById<TextView>(R.id.cat_name).text = category.name
-        view.findViewById<ImageView>(R.id.cat_image).setImageResource(category.icon)
 
         return view
     }
-
 }

@@ -6,14 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.ImageView
-import android.widget.TextView
 import ru.itis.looktomoney.R
-import ru.itis.looktomoney.domain.Category
-import ru.itis.looktomoney.domain.Wallet
 
-class WalletSpinnerAdapter(
+class IconSpinnerAdapter(
     private val context: Context,
-    private val list: ArrayList<Wallet>
+    private val list: List<Int>
 ) : BaseAdapter() {
     override fun getCount(): Int {
         return list.size
@@ -30,12 +27,11 @@ class WalletSpinnerAdapter(
     override fun getView(p0: Int, p1: View?, p2: ViewGroup?): View {
         val layout = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
 
-        var view : View = layout.inflate(R.layout.item_wallet,p2, false)
+        var view : View = layout.inflate(R.layout.item_icon_for_category,p2, false)
 
-        val wallet = getItem(p0) as Wallet
+        val int = getItem(p0) as Int
 
-        view.findViewById<TextView>(R.id.wall_name).text = wallet.name.toString()
-        view.findViewById<TextView>(R.id.wall_sum).text = wallet.numb.toString()
+        view.findViewById<ImageView>(R.id.icon_image).setImageResource(int)
 
         return view
     }

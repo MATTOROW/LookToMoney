@@ -1,10 +1,14 @@
 package ru.itis.looktomoney.fragments
 
+import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
 import android.view.View
+import android.widget.AdapterView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import ru.itis.looktomoney.adapters.IconSpinnerAdapter
+import ru.itis.looktomoney.adapters.Icons
 import ru.itis.looktomoney.R
 import ru.itis.looktomoney.databinding.FragmentAddCategoryBinding
 import ru.itis.looktomoney.domain.Category
@@ -23,9 +27,34 @@ class AddCategoryFragment : Fragment(R.layout.fragment_add_category) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentAddCategoryBinding.bind(view)
 
+        var pref = requireActivity().getSharedPreferences("ICON", Context.MODE_PRIVATE)
+
         binding?.run {
             var polz_choice = -1
+
+            var polz_icon = -1
+
+            spinner.adapter = IconSpinnerAdapter(requireContext(), Icons.list)
             var db = DB_category_Helper(this.root.context, null)
+
+            val itemSelectedListener: AdapterView.OnItemSelectedListener =
+                object : AdapterView.OnItemSelectedListener {
+                    override fun onItemSelected(
+                        parent: AdapterView<*>,
+                        view: View,
+                        position: Int,
+                        id: Long
+                    ) {
+
+                        val item = parent.getItemAtPosition(position) as Int
+                        polz_icon = item
+                    }
+
+                    override fun onNothingSelected(parent: AdapterView<*>?) {
+                    }
+                }
+            spinner.onItemSelectedListener = itemSelectedListener
+
             choiceInputInCat.setOnClickListener{
                 polz_choice = 0
                 choiceInputInCat.setTextColor(Color.GREEN)
@@ -38,13 +67,14 @@ class AddCategoryFragment : Fragment(R.layout.fragment_add_category) {
                 choiceOutputInCat.setTextColor(Color.GREEN)
             }
 
+
             buttonAppend.setOnClickListener {
                 var text = polzName.text.toString()
 
                 var desk = polzDesk.text.toString()
-                // добавление иконки
 
-                if (text == "" || polz_choice == -1){
+
+                if (text == "" || polz_choice == -1 || polz_icon == -1){
                     Toast.makeText(this.root.context, "Ошибка", Toast.LENGTH_SHORT).show()
                 }
                 else{
@@ -55,7 +85,7 @@ class AddCategoryFragment : Fragment(R.layout.fragment_add_category) {
                     }
                     db.addCategory(Category(text,
                         desk,
-                        R.drawable.ic_launcher_background,
+                        polz_icon,
                         type
                         ))
 
