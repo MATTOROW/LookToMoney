@@ -6,6 +6,8 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import ru.itis.looktomoney.adapters.CategorySpinnerAdapter
+import ru.itis.looktomoney.adapters.WalletSpinnerAdapter
 import ru.itis.looktomoney.databinding.FragmentAddChangeBinding
 import ru.itis.looktomoney.domain.Category
 import ru.itis.looktomoney.domain.Change
@@ -18,6 +20,7 @@ import ru.itis.looktomoney.domain.Wallet
 class AddChangeFragment : Fragment(R.layout.fragment_add_change){
 
     private var binding : FragmentAddChangeBinding? = null
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -33,18 +36,20 @@ class AddChangeFragment : Fragment(R.layout.fragment_add_change){
             val db_change = DB_days_Helper(this.root.context, null)
             val db_wallet = DB_wallet_Helper(this.root.context, null)
 
+            spinnerWallet.adapter = WalletSpinnerAdapter(requireContext(), db_wallet.getAll())
 
             choiceInput.setOnClickListener{
                 polz_choice_type = 0
                 choiceInput.setTextColor(Color.GREEN)
                 choiceOutput.setTextColor(Color.RED)
-
+                spinnerCategory.adapter = CategorySpinnerAdapter(requireContext(), db_category.getAllIncomeCategorys())
             }
 
             choiceOutput.setOnClickListener{
                 polz_choice_type = 1
                 choiceInput.setTextColor(Color.RED)
                 choiceOutput.setTextColor(Color.GREEN)
+                spinnerCategory.adapter = CategorySpinnerAdapter(requireContext(), db_category.getAllOutcomeCategorys())
             }
 
 

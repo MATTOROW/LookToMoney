@@ -4,9 +4,10 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginHorizontal="16dp"
-    android:layout_marginTop="8dp"
+    android:layout_marginTop="25dp"
     xmlns:tools="http://schemas.android.com/tools"
-    app:cardCornerRadius="24dp">
+    app:cardCornerRadius="26dp"
+    >
 
 
     <LinearLayout
@@ -22,7 +23,6 @@
             android:id="@+id/icon_image"
             android:layout_width="22dp"
             android:layout_height="22dp"
-
             android:scaleType="centerCrop"
             android:layout_gravity="center"
             tools:srcCompat="@tools:sample/avatars" />

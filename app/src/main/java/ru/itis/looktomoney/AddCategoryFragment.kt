@@ -1,5 +1,7 @@
 package ru.itis.looktomoney
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.graphics.Color
 import android.os.Bundle
 import android.view.View
@@ -7,6 +9,7 @@ import android.widget.AdapterView
 import android.widget.FrameLayout
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import ru.itis.looktomoney.adapters.IconSpinnerAdapter
 import ru.itis.looktomoney.adapters.Icons
 import ru.itis.looktomoney.databinding.FragmentAddCategoryBinding
 import ru.itis.looktomoney.domain.Category
@@ -25,11 +28,12 @@ class AddCategoryFragment : Fragment(R.layout.fragment_add_category) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentAddCategoryBinding.bind(view)
 
+        var pref = requireActivity().getSharedPreferences("ICON", Context.MODE_PRIVATE)
+
         binding?.run {
             var polz_choice = -1
 
-            var polz_icon = R.drawable.baseline_attach_money_24
-
+            spinner.adapter = IconSpinnerAdapter(requireContext(), Icons.list)
             var db = DB_category_Helper(this.root.context, null)
 
             choiceInputInCat.setOnClickListener{
@@ -44,9 +48,6 @@ class AddCategoryFragment : Fragment(R.layout.fragment_add_category) {
                 choiceOutputInCat.setTextColor(Color.GREEN)
             }
 
-            icon.setOnClickListener {
-                fragmentForIcon.visibility = FrameLayout.VISIBLE
-            }
 
             buttonAppend.setOnClickListener {
                 var text = polzName.text.toString()
@@ -65,7 +66,7 @@ class AddCategoryFragment : Fragment(R.layout.fragment_add_category) {
                     }
                     db.addCategory(Category(text,
                         desk,
-                        polz_icon,
+                        R.drawable.baseline_attach_money_24,
                         type
                         ))
 
@@ -73,6 +74,6 @@ class AddCategoryFragment : Fragment(R.layout.fragment_add_category) {
                 }
             }
         }
-    }
 
+    }
 }
