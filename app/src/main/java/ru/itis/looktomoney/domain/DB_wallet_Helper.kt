@@ -33,7 +33,7 @@ class DB_wallet_Helper(
     }
     
 
-    private fun getAll() : ArrayList<Wallet>{
+    fun getAll() : ArrayList<Wallet>{
         val db = this.readableDatabase
         val values = db.rawQuery("SELECT * FROM wallets", null)
         val list : ArrayList<Wallet> = ArrayList()

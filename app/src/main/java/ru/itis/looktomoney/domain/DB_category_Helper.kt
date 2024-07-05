@@ -54,7 +54,7 @@ class DB_category_Helper(
                 }
                 val name = values.getString(1)
                 val description = values.getString(2)
-                val icon = values.getString(3)
+                val icon = values.getInt(3)
                 list.add(Category(name = name, description = description, icon = icon, type = type))
             } while (values.moveToNext())
         }
@@ -62,4 +62,5 @@ class DB_category_Helper(
         db.close()
         return list
     }
+
 }
