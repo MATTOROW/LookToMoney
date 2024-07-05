@@ -4,10 +4,10 @@ import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
+import android.widget.FrameLayout
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import ru.itis.looktomoney.adapters.CategorySpinnerAdapter
-import ru.itis.looktomoney.adapters.IconSpinnerAdapter
+import ru.itis.looktomoney.adapters.Icons
 import ru.itis.looktomoney.databinding.FragmentAddCategoryBinding
 import ru.itis.looktomoney.domain.Category
 import ru.itis.looktomoney.domain.DB_category_Helper
@@ -31,35 +31,21 @@ class AddCategoryFragment : Fragment(R.layout.fragment_add_category) {
             var polz_icon = R.drawable.baseline_attach_money_24
 
             var db = DB_category_Helper(this.root.context, null)
+
             choiceInputInCat.setOnClickListener{
                 polz_choice = 0
                 choiceInputInCat.setTextColor(Color.GREEN)
                 choiceOutputInCat.setTextColor(Color.RED)
             }
 
-            iconSpinner.adapter = IconSpinnerAdapter(requireContext())
-
-            val itemSelected: AdapterView.OnItemSelectedListener =
-                object : AdapterView.OnItemSelectedListener {
-                    override fun onItemSelected(
-                        parent: AdapterView<*>,
-                        view: View,
-                        position: Int,
-                        id: Long
-                    ) {
-                        val item : Int = parent.getItemAtPosition(position) as Int
-                        polz_icon = item
-                    }
-
-                    override fun onNothingSelected(parent: AdapterView<*>?) {
-                    }
-                }
-            iconSpinner.onItemSelectedListener = itemSelected
-
             choiceOutputInCat.setOnClickListener{
                 polz_choice = 1
                 choiceInputInCat.setTextColor(Color.RED)
                 choiceOutputInCat.setTextColor(Color.GREEN)
+            }
+
+            icon.setOnClickListener {
+                fragmentForIcon.visibility = FrameLayout.VISIBLE
             }
 
             buttonAppend.setOnClickListener {

@@ -18,20 +18,13 @@
 
         >
 
-        <TextView
-            android:id="@+id/icon_number"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text=""
-            android:layout_marginStart="15dp"
-            tools:text="Название"/>
-
         <ImageView
             android:id="@+id/icon_image"
             android:layout_width="22dp"
             android:layout_height="22dp"
-            android:layout_marginStart="15dp"
-            android:scaleType="fitStart"
+
+            android:scaleType="centerCrop"
+            android:layout_gravity="center"
             tools:srcCompat="@tools:sample/avatars" />
     </LinearLayout>
 
