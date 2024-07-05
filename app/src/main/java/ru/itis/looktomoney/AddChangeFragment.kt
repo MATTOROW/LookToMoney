@@ -38,6 +38,7 @@ class AddChangeFragment : Fragment(R.layout.fragment_add_change){
 
             spinnerWallet.adapter = WalletSpinnerAdapter(requireContext(), db_wallet.getAll())
 
+
             choiceInput.setOnClickListener{
                 polz_choice_type = 0
                 choiceInput.setTextColor(Color.GREEN)
@@ -58,9 +59,42 @@ class AddChangeFragment : Fragment(R.layout.fragment_add_change){
                 var cat : Category? = null
                 var wallet : Wallet? = null
 
+                val catSelected: AdapterView.OnItemSelectedListener =
+                    object : AdapterView.OnItemSelectedListener {
+                        override fun onItemSelected(
+                            parent: AdapterView<*>,
+                            view: View,
+                            position: Int,
+                            id: Long
+                        ) {
+
+                            val item = parent.getItemAtPosition(position) as Category
+                            cat = item
+                        }
+
+                        override fun onNothingSelected(parent: AdapterView<*>?) {
+                        }
+                    }
+                spinnerCategory.onItemSelectedListener = catSelected
 
 
+                val walletSelected: AdapterView.OnItemSelectedListener =
+                    object : AdapterView.OnItemSelectedListener {
+                        override fun onItemSelected(
+                            parent: AdapterView<*>,
+                            view: View,
+                            position: Int,
+                            id: Long
+                        ) {
 
+                            val item = parent.getItemAtPosition(position) as Wallet
+                            wallet = item
+                        }
+
+                        override fun onNothingSelected(parent: AdapterView<*>?) {
+                        }
+                    }
+                spinnerWallet.onItemSelectedListener = walletSelected
 
 
                 var numb = -1
