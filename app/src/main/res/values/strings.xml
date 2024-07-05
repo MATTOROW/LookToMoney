@@ -1,4 +1,8 @@
 <resources>
-    <string name="app_name">LookToMoney</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="app_name" translatable="false">LookToMoney</string>
+    <string name="all_accounts">All accounts</string>
+    <string name="create_new_acc">Creating new account</string>
+    <string name="input_acc_name">Enter account name</string>
+    <string name="input_acc_sum">Enter account sum</string>
+    <string name="input_acc_icon">Choose account icon</string>
 </resources>

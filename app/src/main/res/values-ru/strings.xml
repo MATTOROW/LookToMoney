@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="all_accounts">Все счета</string>
+    <string name="create_new_acc">Создание нового счёта</string>
+    <string name="input_acc_name">Введите название счета</string>
+    <string name="input_acc_sum">Введите сумму на счете</string>
+    <string name="input_acc_icon">Выберите иконку счёта</string>
+</resources>
