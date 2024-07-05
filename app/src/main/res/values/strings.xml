@@ -1,4 +1,4 @@
 <resources>
-    <string name="app_name">LookToMoney</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="app_name" translatable="false">LookToMoney</string>
+    <string name="all_accounts">All accounts</string>
 </resources>

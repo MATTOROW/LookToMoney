@@ -1,11 +1,11 @@
-package ru.itis.looktomoney
+package ru.itis.looktomoney.fragments
 
 import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import ru.itis.looktomoney.adapters.CategorySpinnerAdapter
+import ru.itis.looktomoney.R
 import ru.itis.looktomoney.databinding.FragmentAddCategoryBinding
 import ru.itis.looktomoney.domain.Category
 import ru.itis.looktomoney.domain.DB_category_Helper

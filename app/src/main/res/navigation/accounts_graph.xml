@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/accounts_graph"
+    app:startDestination="@id/accountMainFragment">
+    <fragment
+        android:id="@+id/accountMainFragment"
+        android:name="ru.itis.looktomoney.fragments.accounts.AccountMainFragment"
+        android:label="fragment_account_main"
+        tools:layout="@layout/fragment_account_main" >
+        <action
+            android:id="@+id/action_accountMainFragment_to_createNewAccountFragment"
+            app:destination="@id/createNewAccountFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/createNewAccountFragment"
+        android:name="ru.itis.looktomoney.fragments.accounts.CreateNewAccountFragment"
+        android:label="fragment_create_new_account"
+        tools:layout="@layout/fragment_create_new_account" />
+</navigation>
