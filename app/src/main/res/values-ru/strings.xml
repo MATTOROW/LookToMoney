@@ -5,4 +5,7 @@
     <string name="input_acc_name">Введите название счета</string>
     <string name="input_acc_sum">Введите сумму на счете</string>
     <string name="input_acc_icon">Выберите иконку счёта</string>
+    <string name="account_title">Счета</string>
+    <string name="addCategory_title">Добавить категорию</string>
+    <string name="addChange_title">Добавить операцию</string>
 </resources>

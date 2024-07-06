@@ -5,4 +5,7 @@
     <string name="input_acc_name">Enter account name</string>
     <string name="input_acc_sum">Enter account sum</string>
     <string name="input_acc_icon">Choose account icon</string>
+    <string name="account_title">Accounts</string>
+    <string name="addCategory_title">Add Category</string>
+    <string name="addChange_title">Add change</string>
 </resources>

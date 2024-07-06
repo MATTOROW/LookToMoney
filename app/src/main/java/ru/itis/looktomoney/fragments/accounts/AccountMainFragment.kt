@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import ru.itis.looktomoney.R
 import ru.itis.looktomoney.adapters.AccountAdapter
@@ -23,6 +24,10 @@ class AccountMainFragment : Fragment(R.layout.fragment_account_main) {
         binding?.run {
             rvAccContainer.adapter = AccountAdapter(dbWalletHelper.getAll(), requireContext())
             rvAccContainer.layoutManager = LinearLayoutManager(requireContext())
+
+            btnAddAcc.setOnClickListener {
+                findNavController().navigate(R.id.action_accountMainFragment_to_createNewAccountFragment)
+            }
         }
     }
 }
