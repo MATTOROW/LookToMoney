@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.View
 import android.widget.AdapterView
 import android.widget.Toast
+import androidx.navigation.fragment.findNavController
 import ru.itis.looktomoney.R
 import ru.itis.looktomoney.adapters.IconSpinnerAdapter
 import ru.itis.looktomoney.adapters.Icons_Wallet
@@ -63,6 +64,9 @@ class CreateNewAccountFragment : Fragment(R.layout.fragment_create_new_account) 
                 }
             }
 
+            btnGoBack.setOnClickListener {
+                findNavController().popBackStack()
+            }
         }
     }
 
