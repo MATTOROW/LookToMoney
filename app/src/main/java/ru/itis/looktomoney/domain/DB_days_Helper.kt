@@ -46,6 +46,15 @@ class DB_days_Helper (
 
         db.close()
 
+        val db_wallet = DB_wallet_Helper(context, factory)
+
+        if (change.category!!.type.equals("Income")){
+            db_wallet.plusToWallet(change.wallet!!.name, change.numb)
+        }
+        else{
+            db_wallet.minusToWallet(change.wallet!!.name, change.numb)
+        }
+
     }
 
     fun getAll(this_date: MyDate) : ArrayList<Change>{

@@ -27,12 +27,50 @@ class DB_wallet_Helper(
         values.put("numb", wl.numb)
         values.put("icon", wl.icon)
 
+        //проверка, нет ли такого счёта уже
+        val list = getAll()
+        for (wal in list){
+            if (wal.name == wl.name) return
+        }
+
         val db = this.writableDatabase
         db.insert("wallets", null, values)
 
         db.close()
     }
-    
+
+    fun plusToWallet(string: String, int : Int){
+        val wallet : Wallet = getByName(string)!!
+        delteByName(string)
+
+        wallet.numb += int
+
+        addWallet(wallet)
+    }
+
+    fun minusToWallet(string: String, int : Int){
+        val wallet : Wallet = getByName(string)!!
+        delteByName(string)
+
+        wallet.numb -= int
+
+        addWallet(wallet)
+    }
+
+
+    fun getByName(string: String) : Wallet?{
+        val list = getAll()
+        for (wal in list){
+            if (wal.name.equals(string)) return wal
+        }
+        return null
+    }
+
+    fun delteByName(string: String){
+        val db = this.writableDatabase
+
+        db.execSQL("DELETE FROM wallets WHERE name = '$string'")
+    }
 
     fun getAll() : ArrayList<Wallet>{
         val db = this.readableDatabase
