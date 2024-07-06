@@ -18,6 +18,13 @@
 
         >
 
+        <ImageView
+            android:id="@+id/wall_icon"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/ic_credit_card" />
+
         <TextView
             android:id="@+id/wall_name"
             android:layout_width="match_parent"
@@ -34,6 +41,8 @@
             android:scaleType="fitStart"
             tools:srcCompat="@tools:sample/avatars"
             tools:text="Сумма" />
+
+
     </LinearLayout>
 
 
