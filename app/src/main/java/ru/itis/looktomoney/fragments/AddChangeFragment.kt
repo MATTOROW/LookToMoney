@@ -69,7 +69,7 @@ class AddChangeFragment : Fragment(R.layout.fragment_add_change){
                             id: Long
                         ) {
 
-                            val item = parent.getItemAtPosition(position) as Category
+                            val item = parent.getItemAtPosition(position) as Category // я не уверен в правильности этого
                             cat = item
                         }
 
@@ -88,7 +88,7 @@ class AddChangeFragment : Fragment(R.layout.fragment_add_change){
                             id: Long
                         ) {
 
-                            val item = parent.getItemAtPosition(position) as Wallet
+                            val item = parent.getItemAtPosition(position) as Wallet // я не уверен в правильности этого
                             wallet = item
                         }
 

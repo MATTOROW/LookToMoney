@@ -36,6 +36,7 @@ class WalletSpinnerAdapter(
 
         view.findViewById<TextView>(R.id.wall_name).text = wallet.name.toString()
         view.findViewById<TextView>(R.id.wall_sum).text = wallet.numb.toString()
+        view.findViewById<ImageView>(R.id.wall_icon).setImageResource(wallet.icon)
 
         return view
     }

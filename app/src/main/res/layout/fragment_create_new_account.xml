@@ -38,6 +38,13 @@
             android:layout_weight="1"
             android:text="@string/create_new_acc"
             android:textSize="24sp" />
+
+        <ImageView
+            android:id="@+id/confirmation_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:src="@drawable/ic_plus" />
     </LinearLayout>
 
     <ScrollView
@@ -74,7 +81,8 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:hint="@string/input_acc_name"
-                    android:inputType="text" />
+                    android:inputType="text"
+                    android:minHeight="48dp" />
             </LinearLayout>
 
             <LinearLayout
@@ -97,7 +105,8 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:hint="@string/input_acc_sum"
-                    android:inputType="number" />
+                    android:inputType="number"
+                    android:minHeight="48dp" />
 
             </LinearLayout>
 
@@ -116,9 +125,13 @@
                     android:textSize="20sp" />
 
                 <Spinner
-                    android:id="@+id/spinner"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:id="@+id/spinner_icon_wallet"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:minHeight="48dp"
+                    tools:listitem="@layout/item_icon_for_category" />
 
             </LinearLayout>
         </LinearLayout>
