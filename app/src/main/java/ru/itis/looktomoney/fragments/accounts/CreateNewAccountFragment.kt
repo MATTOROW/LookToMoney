@@ -24,6 +24,27 @@ class CreateNewAccountFragment : Fragment(R.layout.fragment_create_new_account) 
 
         binding?.run {
 
+            var polz_icon = -1
+
+            val itemIconSelected: AdapterView.OnItemSelectedListener =
+                object : AdapterView.OnItemSelectedListener {
+                    override fun onItemSelected(
+                        parent: AdapterView<*>,
+                        view: View,
+                        position: Int,
+                        id: Long
+                    ) {
+
+                        val item = parent.getItemAtPosition(position) as Int
+                        polz_icon = item
+                    }
+
+                    override fun onNothingSelected(parent: AdapterView<*>?) {
+                    }
+                }
+
+            spinnerIconWallet.onItemSelectedListener = itemIconSelected
+
             confirmationButton.setOnClickListener {
                 var text = inputAccName.text.toString()
                 var numb = -1
@@ -32,27 +53,6 @@ class CreateNewAccountFragment : Fragment(R.layout.fragment_create_new_account) 
                 } catch (_ : Exception){}
 
                 spinnerIconWallet.adapter = IconSpinnerAdapter(requireContext(), Icons_Wallet.list)
-
-                var polz_icon = -1
-
-                val itemIconSelected: AdapterView.OnItemSelectedListener =
-                    object : AdapterView.OnItemSelectedListener {
-                        override fun onItemSelected(
-                            parent: AdapterView<*>,
-                            view: View,
-                            position: Int,
-                            id: Long
-                        ) {
-
-                            val item = parent.getItemAtPosition(position) as Int
-                            polz_icon = item
-                        }
-
-                        override fun onNothingSelected(parent: AdapterView<*>?) {
-                        }
-                    }
-
-                spinnerIconWallet.onItemSelectedListener = itemIconSelected
 
                 if (text == "" || numb == -1 || polz_icon == -1){
                     Toast.makeText(requireContext(), "Ошибка", Toast.LENGTH_SHORT).show()
