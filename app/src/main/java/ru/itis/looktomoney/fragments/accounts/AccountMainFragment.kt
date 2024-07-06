@@ -21,7 +21,7 @@ class AccountMainFragment : Fragment(R.layout.fragment_account_main) {
         val dbWalletHelper = DB_wallet_Helper(requireContext(), null)
 
         binding?.run {
-            rvAccContainer.adapter = AccountAdapter(dbWalletHelper.getAll())
+            rvAccContainer.adapter = AccountAdapter(dbWalletHelper.getAll(), requireContext())
             rvAccContainer.layoutManager = LinearLayoutManager(requireContext())
         }
     }

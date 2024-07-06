@@ -57,6 +57,59 @@ class DB_days_Helper (
 
     }
 
+    private fun addDay(day : Day, wallet: Wallet){
+        val db = this.writableDatabase
+
+        val arr : ArrayList<Change> = ArrayList()
+
+        for (ch in day.changes){
+            if (ch.wallet!!.name != wallet.name) arr.add(ch)
+        }
+
+        if (arr.size != 0){
+            val values = ContentValues()
+            values.put("date", day.data.toString())
+
+            val mapper = ObjectMapper()
+            values.put("changes", mapper.writeValueAsString(arr))
+
+            db.insert("days", null, values)
+        }
+
+        db.close()
+    }
+
+    fun replaceAllWithoutThisWallet(wallet: Wallet){
+        val list = getAll()
+        val db = this.writableDatabase
+        db.execSQL("DELETE FROM days")
+        db.close()
+
+        for (day in list){
+            addDay(day, wallet)
+        }
+    }
+
+    fun getAll() : ArrayList<Day>{
+        val db = this.readableDatabase
+        val values = db.rawQuery("SELECT * FROM days", null)
+        var list : ArrayList<Day> = ArrayList()
+        if (values.moveToFirst()){
+            do {
+                val date = values.getString(1)
+                val json = values.getString(2)
+                var change_list = ArrayList<Change>()
+                val mapper = ObjectMapper()
+                change_list = mapper.readValue(json)
+                list.add(Day(MyDate(date), change_list))
+            }
+            while (values.moveToNext())
+        }
+        values.close()
+        db.close()
+        return list
+    }
+
     fun getAll(this_date: MyDate) : ArrayList<Change>{
         val db = this.readableDatabase
         val values = db.rawQuery("SELECT * FROM days", null)

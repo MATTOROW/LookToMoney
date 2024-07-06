@@ -1,15 +1,18 @@
 package ru.itis.looktomoney.adapters
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import ru.itis.looktomoney.databinding.ItemAccountBinding
 import ru.itis.looktomoney.domain.Wallet
 import ru.itis.looktomoney.holders.AccountHolder
+import kotlin.reflect.jvm.internal.impl.descriptors.Visibilities.Private
 
 
 class AccountAdapter(
-    private val list : ArrayList<Wallet>
+    private val list : ArrayList<Wallet>,
+    private val context : Context
 ) : RecyclerView.Adapter<AccountHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AccountHolder {
@@ -18,7 +21,8 @@ class AccountAdapter(
                 LayoutInflater.from(parent.context),
                 parent,
                 false
-            )
+            ),
+            context
         )
     }
 
