@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import ru.itis.looktomoney.DateValidator.DateValidatorUsingDateFormat
 import ru.itis.looktomoney.R
 import ru.itis.looktomoney.adapters.CategorySpinnerAdapter
 import ru.itis.looktomoney.adapters.WalletSpinnerAdapter
@@ -54,67 +55,70 @@ class AddChangeFragment : Fragment(R.layout.fragment_add_change){
                 spinnerCategory.adapter = CategorySpinnerAdapter(requireContext(), db_category.getAllOutcomeCategorys())
             }
 
+            var cat : Category? = null
+            var wallet : Wallet? = null
 
+            val catSelected: AdapterView.OnItemSelectedListener =
+                object : AdapterView.OnItemSelectedListener {
+                    override fun onItemSelected(
+                        parent: AdapterView<*>,
+                        view: View?,
+                        position: Int,
+                        id: Long
+                    ) {
+
+                        val item = parent.getItemAtPosition(position) as Category // я не уверен в правильности этого
+                        cat = item
+                    }
+
+                    override fun onNothingSelected(parent: AdapterView<*>?) {
+                    }
+                }
+            spinnerCategory.onItemSelectedListener = catSelected
+
+            val walletSelected: AdapterView.OnItemSelectedListener =
+                object : AdapterView.OnItemSelectedListener {
+                    override fun onItemSelected(
+                        parent: AdapterView<*>,
+                        view: View?,
+                        position: Int,
+                        id: Long
+                    ) {
+
+                        val item = parent.getItemAtPosition(position) as Wallet // я не уверен в правильности этого
+                        wallet = item
+                    }
+
+                    override fun onNothingSelected(parent: AdapterView<*>?) {
+                    }
+                }
+            spinnerWallet.onItemSelectedListener = walletSelected
 
             addToDataBaseButton.setOnClickListener {
-                var cat : Category? = null
-                var wallet : Wallet? = null
-
-                val catSelected: AdapterView.OnItemSelectedListener =
-                    object : AdapterView.OnItemSelectedListener {
-                        override fun onItemSelected(
-                            parent: AdapterView<*>,
-                            view: View,
-                            position: Int,
-                            id: Long
-                        ) {
-
-                            val item = parent.getItemAtPosition(position) as Category // я не уверен в правильности этого
-                            cat = item
-                        }
-
-                        override fun onNothingSelected(parent: AdapterView<*>?) {
-                        }
-                    }
-                spinnerCategory.onItemSelectedListener = catSelected
-
-
-                val walletSelected: AdapterView.OnItemSelectedListener =
-                    object : AdapterView.OnItemSelectedListener {
-                        override fun onItemSelected(
-                            parent: AdapterView<*>,
-                            view: View,
-                            position: Int,
-                            id: Long
-                        ) {
-
-                            val item = parent.getItemAtPosition(position) as Wallet // я не уверен в правильности этого
-                            wallet = item
-                        }
-
-                        override fun onNothingSelected(parent: AdapterView<*>?) {
-                        }
-                    }
-                spinnerWallet.onItemSelectedListener = walletSelected
-
-
-                var numb = -1
+                var numb = -1.0
                 try {
-                    numb = polzNumber.text.toString().toInt()
+                    numb = polzNumber.text.toString().toDouble()
                 } catch (_: Exception){}
 
                 var date : MyDate? = null
 
-                 try {
-                     date = MyDate(polzDate.text.toString()) // нужно сделать, чтобы обрабатывалось, если пользователь не так ввёл дату
-                 } catch (_ : Exception){}
+//                 try {
+//                     date = MyDate(polzDate.text.toString()) // нужно сделать, чтобы обрабатывалось, если пользователь не так ввёл дату
+//                 } catch (_ : Exception){}
 
-                if (polz_choice_type == -1 || wallet == null || cat == null || numb == -1 || date == null){
+
+                if (DateValidatorUsingDateFormat("dd.MM.yyyy").isValid(polzDate.text.toString())){
+                    date = MyDate(polzDate.text.toString())
+                }
+
+
+                if (polz_choice_type == -1 || wallet == null || cat == null || numb == -1.0 || date == null){
                     Toast.makeText(this.root.context, "Ошибка", Toast.LENGTH_SHORT ).show()
                 }
                 else{
                     db_change.addChange(Change(int = numb, category = cat!!, wallet = wallet!!), date)
                     Toast.makeText(this.root.context, "Успешно", Toast.LENGTH_SHORT ).show()
+                    spinnerWallet.adapter = WalletSpinnerAdapter(requireContext(), db_wallet.getAll())
                 }
             }
         }

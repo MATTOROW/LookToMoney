@@ -1,25 +1,32 @@
 package ru.itis.looktomoney
 
-import android.content.Intent
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
+import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.setupWithNavController
 import ru.itis.looktomoney.databinding.ActivityMainBinding
 
+
 class MainActivity : AppCompatActivity() {
-    private var binding : ActivityMainBinding? = null
+    private lateinit var binding: ActivityMainBinding
+
+    private lateinit var controller: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater).also {
-            setContentView(it.root)
+
+        val window = window
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+        window.statusBarColor = resources.getColor(R.color.medium_blue)
+        binding = ActivityMainBinding.inflate(layoutInflater).also { setContentView(it.root) }
+
+        controller =
+            (supportFragmentManager.findFragmentById(R.id.mainContainer) as NavHostFragment).navController
+
+        binding.run {
+            navbarBottom.setupWithNavController(controller)
         }
-
-        binding?.run {
-
-        }
-
     }
 }

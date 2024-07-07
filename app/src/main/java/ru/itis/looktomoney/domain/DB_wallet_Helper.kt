@@ -11,7 +11,7 @@ class DB_wallet_Helper(
 ) : SQLiteOpenHelper(context, "wallet", factory, 1) {
 
     override fun onCreate(db: SQLiteDatabase?) {
-        val query = "CREATE TABLE  wallets(id INT PRIMARY KEY, name TEXT, numb INT, icon Int)"
+        val query = "CREATE TABLE  wallets(id INT PRIMARY KEY, name TEXT, numb REAL, icon Int)"
         db!!.execSQL(query)
     }
 
@@ -39,7 +39,7 @@ class DB_wallet_Helper(
         db.close()
     }
 
-    fun plusToWallet(string: String, int : Int){
+    fun plusToWallet(string: String, int : Double){
         val wallet : Wallet = getByName(string)!!
         delteByName(string)
 
@@ -48,7 +48,7 @@ class DB_wallet_Helper(
         addWallet(wallet)
     }
 
-    fun minusToWallet(string: String, int : Int){
+    fun minusToWallet(string: String, int : Double){
         val wallet : Wallet = getByName(string)!!
         delteByName(string)
 
@@ -78,7 +78,7 @@ class DB_wallet_Helper(
         val list : ArrayList<Wallet> = ArrayList()
         if (values.moveToFirst()){
             do {
-                val numb = values.getInt(2)
+                val numb = values.getDouble(2)
                 val name = values.getString(1)
                 val icon = values.getInt(3)
                 list.add(Wallet(numb, name, icon))

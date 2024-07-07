@@ -11,7 +11,7 @@ import kotlin.reflect.jvm.internal.impl.descriptors.Visibilities.Private
 
 
 class AccountAdapter(
-    private val list : ArrayList<Wallet>,
+    var list : ArrayList<Wallet>,
     private val context : Context
 ) : RecyclerView.Adapter<AccountHolder>(){
 
@@ -22,7 +22,8 @@ class AccountAdapter(
                 parent,
                 false
             ),
-            context
+            context,
+            this
         )
     }
 
@@ -32,5 +33,9 @@ class AccountAdapter(
 
     override fun onBindViewHolder(holder: AccountHolder, position: Int) {
         holder.onBind(list[position])
+    }
+
+    fun updateDataset(newList: ArrayList<Wallet>) {
+        list = newList
     }
 }

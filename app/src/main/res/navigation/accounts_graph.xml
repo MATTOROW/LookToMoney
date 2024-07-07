@@ -11,7 +11,11 @@
         tools:layout="@layout/fragment_account_main" >
         <action
             android:id="@+id/action_accountMainFragment_to_createNewAccountFragment"
-            app:destination="@id/createNewAccountFragment" />
+            app:destination="@id/createNewAccountFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/createNewAccountFragment"

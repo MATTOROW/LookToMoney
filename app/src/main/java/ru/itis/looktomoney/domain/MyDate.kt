@@ -22,7 +22,7 @@ class MyDate{
 
 
     override fun toString(): String {
-        return "$day.$month.$year)"
+        return "$day.$month.$year"
     }
 
     override fun equals(other: Any?): Boolean {

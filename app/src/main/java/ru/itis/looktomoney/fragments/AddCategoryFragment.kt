@@ -41,7 +41,7 @@ class AddCategoryFragment : Fragment(R.layout.fragment_add_category) {
                 object : AdapterView.OnItemSelectedListener {
                     override fun onItemSelected(
                         parent: AdapterView<*>,
-                        view: View,
+                        view: View?,
                         position: Int,
                         id: Long
                     ) {
