@@ -1,6 +1,7 @@
 package ru.itis.looktomoney.adapters
 
 import android.content.Context
+import android.icu.text.DecimalFormat
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -35,7 +36,7 @@ class WalletSpinnerAdapter(
         val wallet = getItem(p0) as Wallet
 
         view.findViewById<TextView>(R.id.wall_name).text = wallet.name.toString()
-        view.findViewById<TextView>(R.id.wall_sum).text = wallet.numb.toString()
+        view.findViewById<TextView>(R.id.wall_sum).text = DecimalFormat("#0.00").format(wallet.numb) + " ₽"
         view.findViewById<ImageView>(R.id.wall_icon).setImageResource(wallet.icon)
 
         return view
