@@ -111,6 +111,7 @@ class AddChangeFragment : Fragment(R.layout.fragment_add_change){
                 else{
                     db_change.addChange(Change(int = numb, category = cat!!, wallet = wallet!!), date)
                     Toast.makeText(this.root.context, "Успешно", Toast.LENGTH_SHORT ).show()
+                    spinnerWallet.adapter = WalletSpinnerAdapter(requireContext(), db_wallet.getAll())
                 }
             }
         }
