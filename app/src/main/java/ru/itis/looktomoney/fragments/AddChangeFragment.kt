@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import ru.itis.looktomoney.DateValidator.DateValidatorUsingDateFormat
 import ru.itis.looktomoney.R
 import ru.itis.looktomoney.adapters.CategorySpinnerAdapter
 import ru.itis.looktomoney.adapters.WalletSpinnerAdapter
@@ -101,9 +102,15 @@ class AddChangeFragment : Fragment(R.layout.fragment_add_change){
 
                 var date : MyDate? = null
 
-                 try {
-                     date = MyDate(polzDate.text.toString()) // нужно сделать, чтобы обрабатывалось, если пользователь не так ввёл дату
-                 } catch (_ : Exception){}
+//                 try {
+//                     date = MyDate(polzDate.text.toString()) // нужно сделать, чтобы обрабатывалось, если пользователь не так ввёл дату
+//                 } catch (_ : Exception){}
+
+
+                if (DateValidatorUsingDateFormat("dd.MM.yyyy").isValid(polzDate.text.toString())){
+                    date = MyDate(polzDate.text.toString())
+                }
+
 
                 if (polz_choice_type == -1 || wallet == null || cat == null || numb == -1.0 || date == null){
                     Toast.makeText(this.root.context, "Ошибка", Toast.LENGTH_SHORT ).show()
