@@ -54,50 +54,46 @@ class AddChangeFragment : Fragment(R.layout.fragment_add_change){
                 spinnerCategory.adapter = CategorySpinnerAdapter(requireContext(), db_category.getAllOutcomeCategorys())
             }
 
+            var cat : Category? = null
+            var wallet : Wallet? = null
 
+            val catSelected: AdapterView.OnItemSelectedListener =
+                object : AdapterView.OnItemSelectedListener {
+                    override fun onItemSelected(
+                        parent: AdapterView<*>,
+                        view: View?,
+                        position: Int,
+                        id: Long
+                    ) {
+
+                        val item = parent.getItemAtPosition(position) as Category // я не уверен в правильности этого
+                        cat = item
+                    }
+
+                    override fun onNothingSelected(parent: AdapterView<*>?) {
+                    }
+                }
+            spinnerCategory.onItemSelectedListener = catSelected
+
+            val walletSelected: AdapterView.OnItemSelectedListener =
+                object : AdapterView.OnItemSelectedListener {
+                    override fun onItemSelected(
+                        parent: AdapterView<*>,
+                        view: View?,
+                        position: Int,
+                        id: Long
+                    ) {
+
+                        val item = parent.getItemAtPosition(position) as Wallet // я не уверен в правильности этого
+                        wallet = item
+                    }
+
+                    override fun onNothingSelected(parent: AdapterView<*>?) {
+                    }
+                }
+            spinnerWallet.onItemSelectedListener = walletSelected
 
             addToDataBaseButton.setOnClickListener {
-                var cat : Category? = null
-                var wallet : Wallet? = null
-
-                val catSelected: AdapterView.OnItemSelectedListener =
-                    object : AdapterView.OnItemSelectedListener {
-                        override fun onItemSelected(
-                            parent: AdapterView<*>,
-                            view: View,
-                            position: Int,
-                            id: Long
-                        ) {
-
-                            val item = parent.getItemAtPosition(position) as Category // я не уверен в правильности этого
-                            cat = item
-                        }
-
-                        override fun onNothingSelected(parent: AdapterView<*>?) {
-                        }
-                    }
-                spinnerCategory.onItemSelectedListener = catSelected
-
-
-                val walletSelected: AdapterView.OnItemSelectedListener =
-                    object : AdapterView.OnItemSelectedListener {
-                        override fun onItemSelected(
-                            parent: AdapterView<*>,
-                            view: View,
-                            position: Int,
-                            id: Long
-                        ) {
-
-                            val item = parent.getItemAtPosition(position) as Wallet // я не уверен в правильности этого
-                            wallet = item
-                        }
-
-                        override fun onNothingSelected(parent: AdapterView<*>?) {
-                        }
-                    }
-                spinnerWallet.onItemSelectedListener = walletSelected
-
-
                 var numb = -1
                 try {
                     numb = polzNumber.text.toString().toInt()
