@@ -94,9 +94,9 @@ class AddChangeFragment : Fragment(R.layout.fragment_add_change){
             spinnerWallet.onItemSelectedListener = walletSelected
 
             addToDataBaseButton.setOnClickListener {
-                var numb = -1
+                var numb = -1.0
                 try {
-                    numb = polzNumber.text.toString().toInt()
+                    numb = polzNumber.text.toString().toDouble()
                 } catch (_: Exception){}
 
                 var date : MyDate? = null
@@ -105,7 +105,7 @@ class AddChangeFragment : Fragment(R.layout.fragment_add_change){
                      date = MyDate(polzDate.text.toString()) // нужно сделать, чтобы обрабатывалось, если пользователь не так ввёл дату
                  } catch (_ : Exception){}
 
-                if (polz_choice_type == -1 || wallet == null || cat == null || numb == -1 || date == null){
+                if (polz_choice_type == -1 || wallet == null || cat == null || numb == -1.0 || date == null){
                     Toast.makeText(this.root.context, "Ошибка", Toast.LENGTH_SHORT ).show()
                 }
                 else{

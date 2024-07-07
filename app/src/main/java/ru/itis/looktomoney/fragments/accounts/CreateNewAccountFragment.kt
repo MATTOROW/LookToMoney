@@ -50,12 +50,12 @@ class CreateNewAccountFragment : Fragment(R.layout.fragment_create_new_account) 
 
             confirmationButton.setOnClickListener {
                 var text = inputAccName.text.toString()
-                var numb = -1
+                var numb : Double= -1.0
                 try{
-                    numb = inputAccSum.text.toString().toInt()
+                    numb = inputAccSum.text.toString().toDouble()
                 } catch (_ : Exception){}
 
-                if (text == "" || numb == -1 || polz_icon == -1){
+                if (text == "" || numb == -1.0 || polz_icon == -1){
                     Toast.makeText(requireContext(), "Ошибка", Toast.LENGTH_SHORT).show()
                 }
                 else{

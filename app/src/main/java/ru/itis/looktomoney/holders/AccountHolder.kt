@@ -3,6 +3,7 @@ package ru.itis.looktomoney.holders
 import android.app.AlertDialog
 import android.content.Context
 import android.content.DialogInterface
+import android.icu.text.DecimalFormat
 import android.view.View
 import android.widget.AdapterView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
@@ -22,7 +23,7 @@ class AccountHolder(
         binding.run {
             ivAccIcon.setImageResource(wallet.icon)
             tvAccName.text = wallet.name
-            tvAccBalance.text = wallet.numb.toString() + " ₽"
+            tvAccBalance.text = DecimalFormat("#0.00").format(wallet.numb) + " ₽"
 
 
             ivDeleteAccount.setOnClickListener {
