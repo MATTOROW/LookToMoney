@@ -27,6 +27,8 @@ class CreateNewAccountFragment : Fragment(R.layout.fragment_create_new_account) 
 
             var polz_icon = -1
 
+            spinnerIconWallet.adapter = IconSpinnerAdapter(requireContext(), Icons_Wallet.list)
+
             val itemIconSelected: AdapterView.OnItemSelectedListener =
                 object : AdapterView.OnItemSelectedListener {
                     override fun onItemSelected(
@@ -53,14 +55,14 @@ class CreateNewAccountFragment : Fragment(R.layout.fragment_create_new_account) 
                     numb = inputAccSum.text.toString().toInt()
                 } catch (_ : Exception){}
 
-                spinnerIconWallet.adapter = IconSpinnerAdapter(requireContext(), Icons_Wallet.list)
-
                 if (text == "" || numb == -1 || polz_icon == -1){
                     Toast.makeText(requireContext(), "Ошибка", Toast.LENGTH_SHORT).show()
                 }
                 else{
                     db_wallet.addWallet(Wallet(numb, text, polz_icon))
                     Toast.makeText(requireContext(), "Успешно", Toast.LENGTH_SHORT).show()
+                    findNavController().popBackStack()
+
                 }
             }
 
