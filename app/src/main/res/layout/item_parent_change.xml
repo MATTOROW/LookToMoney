@@ -50,7 +50,7 @@
             tools:itemCount="3"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:listitem="@layout/child_change_item"/>
+            tools:listitem="@layout/item_child_change"/>
 
     </LinearLayout>
 </com.google.android.material.card.MaterialCardView>

@@ -4,13 +4,12 @@ import android.graphics.Color
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import ru.itis.looktomoney.adapters.ChildAdapter
-import ru.itis.looktomoney.databinding.ChildChangeItemBinding
-import ru.itis.looktomoney.databinding.ParentChangeItemBinding
+import ru.itis.looktomoney.databinding.ItemParentChangeBinding
 import ru.itis.looktomoney.domain.Change
 import ru.itis.looktomoney.domain.Day
 
 class ParentHolder(
-    private val binding : ParentChangeItemBinding,
+    private val binding : ItemParentChangeBinding,
 ) : ViewHolder(binding.root) {
 
     fun onBind(day : Day){

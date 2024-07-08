@@ -4,8 +4,8 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import ru.itis.looktomoney.databinding.ChildChangeItemBinding
 import ru.itis.looktomoney.databinding.ItemAccountBinding
+import ru.itis.looktomoney.databinding.ItemChildChangeBinding
 import ru.itis.looktomoney.domain.Change
 import ru.itis.looktomoney.domain.Wallet
 import ru.itis.looktomoney.holders.AccountHolder
@@ -17,7 +17,7 @@ class ChildAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChildHolder {
         return ChildHolder(
-            ChildChangeItemBinding.inflate(
+            ItemChildChangeBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false

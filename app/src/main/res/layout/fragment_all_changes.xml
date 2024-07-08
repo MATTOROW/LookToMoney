@@ -11,7 +11,7 @@
         android:id="@+id/rv_allChanges"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        tools:listitem="@layout/parent_change_item"
+        tools:listitem="@layout/item_parent_change"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

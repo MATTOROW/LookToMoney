@@ -3,8 +3,7 @@ package ru.itis.looktomoney.adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import ru.itis.looktomoney.databinding.ChildChangeItemBinding
-import ru.itis.looktomoney.databinding.ParentChangeItemBinding
+import ru.itis.looktomoney.databinding.ItemParentChangeBinding
 import ru.itis.looktomoney.domain.Change
 import ru.itis.looktomoney.domain.Day
 import ru.itis.looktomoney.holders.ChildHolder
@@ -16,7 +15,7 @@ class ParentAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ParentHolder {
         return ParentHolder(
-            ParentChangeItemBinding.inflate(
+            ItemParentChangeBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false

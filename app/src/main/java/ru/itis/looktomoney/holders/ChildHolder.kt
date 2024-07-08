@@ -7,7 +7,7 @@ import android.graphics.Color
 import android.icu.text.DecimalFormat
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import ru.itis.looktomoney.adapters.AccountAdapter
-import ru.itis.looktomoney.databinding.ChildChangeItemBinding
+import ru.itis.looktomoney.databinding.ItemChildChangeBinding
 import ru.itis.looktomoney.databinding.ItemAccountBinding
 import ru.itis.looktomoney.domain.Change
 import ru.itis.looktomoney.domain.DB_days_Helper
@@ -15,7 +15,7 @@ import ru.itis.looktomoney.domain.DB_wallet_Helper
 import ru.itis.looktomoney.domain.Wallet
 
 class ChildHolder(
-    private val binding : ChildChangeItemBinding,
+    private val binding : ItemChildChangeBinding,
 ) : ViewHolder(binding.root) {
 
     fun onBind(change : Change){

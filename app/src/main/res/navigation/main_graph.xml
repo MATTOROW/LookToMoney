@@ -19,4 +19,9 @@
         android:id="@+id/addChangeFragment"
         android:name="ru.itis.looktomoney.fragments.AddChangeFragment"
         android:label="AddChangeFragment" />
+    <fragment
+        android:id="@+id/allChangesFragment"
+        android:name="ru.itis.looktomoney.fragments.AllChangesFragment"
+        android:label="fragment_all_changes"
+        tools:layout="@layout/fragment_all_changes" />
 </navigation>

@@ -10,4 +10,8 @@
     <item android:id="@+id/addChangeFragment"
         android:title="@string/addChange_title"
         android:icon="@drawable/ic_transaction"/>
+
+    <item android:id="@+id/allChangesFragment"
+        android:title="@string/allChanges_title"
+        android:icon="@drawable/ic_transaction"/>
 </menu>
