@@ -1,6 +1,10 @@
 package ru.itis.looktomoney.fragments
 
+import android.app.DatePickerDialog
+import android.app.DatePickerDialog.OnDateSetListener
 import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
+import android.icu.util.Calendar
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
@@ -19,17 +23,15 @@ import ru.itis.looktomoney.domain.DB_wallet_Helper
 import ru.itis.looktomoney.domain.MyDate
 import ru.itis.looktomoney.domain.Wallet
 
+
 class AddChangeFragment : Fragment(R.layout.fragment_add_change){
 
     private var binding : FragmentAddChangeBinding? = null
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         binding = FragmentAddChangeBinding.bind(view)
-
-
 
         var polz_choice_type = -1
 
@@ -119,6 +121,28 @@ class AddChangeFragment : Fragment(R.layout.fragment_add_change){
                     db_change.addChange(Change(int = numb, category = cat!!, wallet = wallet!!), date)
                     Toast.makeText(this.root.context, "Успешно", Toast.LENGTH_SHORT ).show()
                     spinnerWallet.adapter = WalletSpinnerAdapter(requireContext(), db_wallet.getAll())
+                }
+            }
+            polzDate.setOnFocusChangeListener { v, hasFocus ->
+                if (hasFocus) {
+                    val cal: Calendar = Calendar.getInstance()
+                    val year: Int = cal.get(Calendar.YEAR)
+                    val month: Int = cal.get(Calendar.MONTH)
+                    val day: Int = cal.get(Calendar.DAY_OF_MONTH)
+
+                    val dialog = DatePickerDialog(
+                        requireContext(),
+                        android.R.style.Theme_Holo_Dialog_MinWidth,
+                        { datePicker, year, month, day ->
+                            val date = "$day.$month.$year"
+                            polzDate.setText(date)
+                        },
+                        year,
+                        month,
+                        day
+                    )
+                    dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+                    dialog.show()
                 }
             }
         }
