@@ -4,6 +4,8 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import ru.itis.looktomoney.R
+import ru.itis.looktomoney.adapters.Icons
 
 class DB_category_Helper(
     val context : Context,

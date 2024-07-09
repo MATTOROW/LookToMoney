@@ -10,7 +10,7 @@ object Icons_Wallet {
         R.drawable.wallet_icon_3,
         R.drawable.wallet_icon_4,
         R.drawable.wallet_icon_5,
-        R.drawable.wallet_icon_6
-
+        R.drawable.wallet_icon_6,
+        R.drawable.wallet_icon_10
     )
 }
