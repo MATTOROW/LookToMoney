@@ -10,4 +10,5 @@
     <string name="addChange_title">Добавить операцию</string>
     <string name="allChanges_title">Операции</string>
     <string name="allCategories_title">Категории</string>
+    <string name="categoryInfo_title">Инофрмация по категориям</string>
 </resources>
