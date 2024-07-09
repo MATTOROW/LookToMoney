@@ -1,4 +1,4 @@
-package ru.itis.looktomoney.fragments
+package ru.itis.looktomoney.fragments.categories
 
 import android.content.Context
 import android.graphics.Color
@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import ru.itis.looktomoney.adapters.IconSpinnerAdapter
 import ru.itis.looktomoney.adapters.Icons
 import ru.itis.looktomoney.R
@@ -68,7 +69,7 @@ class AddCategoryFragment : Fragment(R.layout.fragment_add_category) {
             }
 
 
-            buttonAppend.setOnClickListener {
+            btnCategoryConfirm.setOnClickListener {
                 var text = polzName.text.toString()
 
                 var desk = polzDesk.text.toString()
@@ -91,6 +92,9 @@ class AddCategoryFragment : Fragment(R.layout.fragment_add_category) {
 
                     Toast.makeText(this.root.context, "Успешно", Toast.LENGTH_SHORT).show()
                 }
+            }
+            btnGoBackCat.setOnClickListener {
+                findNavController().popBackStack()
             }
         }
     }

@@ -3,8 +3,8 @@
     <item android:id="@+id/accountsContainerFragment"
         android:title="@string/account_title"
         android:icon="@drawable/ic_account"/>
-    <item android:id="@+id/addCategoryFragment"
-        android:title="@string/addCategory_title"
+    <item android:id="@+id/categoriesContainerFragment"
+        android:title="@string/allCategories_title"
         android:icon="@drawable/ic_category"/>
 
     <item android:id="@+id/addChangeFragment"
