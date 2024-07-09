@@ -1,6 +1,6 @@
 package ru.itis.looktomoney.domain
 
-class MyDate{
+class MyDate : Comparable<MyDate>{
     private var day : Int = 0
     private var month : Int = 0
     private var year : Int = 0
@@ -23,6 +23,16 @@ class MyDate{
 
     override fun toString(): String {
         return "$day.$month.$year"
+    }
+
+    override fun compareTo(other: MyDate): Int {
+        if (year > other.year) return 1
+        if (year < other.year) return -1
+        if (month > other.month) return 1
+        if (month < other.month) return -1
+        if (day > other.day) return 1
+        if (day < other.day) return -1
+        return 0
     }
 
     override fun equals(other: Any?): Boolean {
