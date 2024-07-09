@@ -41,6 +41,15 @@ class DB_category_Helper(
         return getAll("Outcome")
     }
 
+    fun deleteThisCategory(category : Category){
+        val db = this.writableDatabase
+
+        db.execSQL("DELETE FROM categorys WHERE name = '${category.name}' AND type = '${category.type}' ")
+
+        val db_days = DB_days_Helper(context, null)
+        db_days.replaceAllWithoutThisCategory(category)
+    }
+
 
     private fun getAll(str : String) : ArrayList<Category>{
         val db = this.readableDatabase

@@ -79,6 +79,39 @@ class DB_days_Helper (
         db.close()
     }
 
+    fun replaceAllWithoutThisCategory(category: Category){
+        val list = getAll()
+        val db = this.writableDatabase
+        db.execSQL("DELETE FROM days")
+        db.close()
+
+        for (day in list){
+            addDay(day, category)
+        }
+    }
+
+    private fun addDay(day : Day, category: Category){
+        val db = this.writableDatabase
+
+        val arr : ArrayList<Change> = ArrayList()
+
+        for (ch in day.changes){
+            if (ch.category!!.name != category.name && ch.category!!.type != category.type) arr.add(ch)
+        }
+
+        if (arr.size != 0){
+            val values = ContentValues()
+            values.put("date", day.data.toString())
+
+            val mapper = ObjectMapper()
+            values.put("changes", mapper.writeValueAsString(arr))
+
+            db.insert("days", null, values)
+        }
+
+        db.close()
+    }
+
     fun replaceAllWithoutThisWallet(wallet: Wallet){
         val list = getAll()
         val db = this.writableDatabase
