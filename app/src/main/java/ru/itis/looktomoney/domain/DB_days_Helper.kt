@@ -145,6 +145,8 @@ class DB_days_Helper (
         }
         values.close()
         db.close()
+        list.sort()
+        list.reverse()
         return list
     }
 
