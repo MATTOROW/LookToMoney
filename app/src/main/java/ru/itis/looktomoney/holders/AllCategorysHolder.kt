@@ -34,7 +34,7 @@ class AllCategorysHolder(
                         override fun onClick(p0: DialogInterface?, p1: Int) {
                             val db = DB_category_Helper(context, null)
                             db.deleteThisCategory(category)
-                            val ind = adapter.list.indexOf(category)
+                            val ind = adapter.list.indexOf(adapter.list.find {it.name.equals(category.name)})
                             when (category.type) {
                                 "Income" -> adapter.updateDataset(db.getAllIncomeCategorys())
                                 "Outcome" -> adapter.updateDataset(db.getAllOutcomeCategorys())

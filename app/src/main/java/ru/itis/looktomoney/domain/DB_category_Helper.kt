@@ -29,6 +29,12 @@ class DB_category_Helper(
         values.put("icon", ic.icon)
         values.put("type", ic.type)
 
+        //проверка, нет ли такой категории уже
+        val list = getAll(ic.type)
+        for (cat in list){
+            if (cat.name == ic.name) return
+        }
+
         val db = this.writableDatabase
         db.insert("categorys", null, values)
 
