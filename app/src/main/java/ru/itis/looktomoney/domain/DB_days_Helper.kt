@@ -79,6 +79,44 @@ class DB_days_Helper (
         db.close()
     }
 
+    fun replaceAllWithoutThisCategory(category: Category){
+        val list = getAll()
+        val db = this.writableDatabase
+        db.execSQL("DELETE FROM days")
+        db.close()
+
+        for (day in list){
+            addDay(day, category)
+        }
+    }
+
+    private fun addDay(day : Day, category: Category){
+        val db = this.writableDatabase
+
+        val arr : ArrayList<Change> = ArrayList()
+
+        for (ch in day.changes){
+            if (ch.category!!.name != category.name || ch.category!!.type != category.type) arr.add(ch)
+            else{
+                val db_wallet = DB_wallet_Helper(context,null)
+                if (ch.category!!.type == "Income") db_wallet.minusToWallet(ch.wallet!!.name, ch.numb)
+                else db_wallet.plusToWallet(ch.wallet!!.name, ch.numb)
+            }
+        }
+
+        if (arr.size != 0){
+            val values = ContentValues()
+            values.put("date", day.data.toString())
+
+            val mapper = ObjectMapper()
+            values.put("changes", mapper.writeValueAsString(arr))
+
+            db.insert("days", null, values)
+        }
+
+        db.close()
+    }
+
     fun replaceAllWithoutThisWallet(wallet: Wallet){
         val list = getAll()
         val db = this.writableDatabase
@@ -108,6 +146,52 @@ class DB_days_Helper (
         values.close()
         db.close()
         return list
+    }
+
+    fun deleteChangeByDate(this_date: MyDate, change: Change){
+        var arr = getAll(this_date)
+
+        val db = this.writableDatabase
+        db.execSQL("DELETE FROM days WHERE date = '${this_date.toString()}'")
+        db.close()
+
+        addDay(Day(this_date, arr), change)
+    }
+
+
+    private fun addDay(day: Day, change: Change){
+        val db = this.writableDatabase
+
+        val arr : ArrayList<Change> = ArrayList()
+
+        var flag = false
+
+        for (ch in day.changes){
+            if (flag
+                || ch.category!!.name != change.category!!.name
+                || ch.category!!.type != change.category!!.type
+                || ch.wallet!!.name != change.wallet!!.name
+                || ch.numb != change.numb
+                ) arr.add(ch)
+            else{
+                val db_wallet = DB_wallet_Helper(context,null)
+                if (ch.category!!.type == "Income") db_wallet.minusToWallet(ch.wallet!!.name, ch.numb)
+                else db_wallet.plusToWallet(ch.wallet!!.name, ch.numb)
+                flag = true
+            }
+        }
+
+        if (arr.size != 0){
+            val values = ContentValues()
+            values.put("date", day.data.toString())
+
+            val mapper = ObjectMapper()
+            values.put("changes", mapper.writeValueAsString(arr))
+
+            db.insert("days", null, values)
+        }
+
+        db.close()
     }
 
     fun getAll(this_date: MyDate) : ArrayList<Change>{

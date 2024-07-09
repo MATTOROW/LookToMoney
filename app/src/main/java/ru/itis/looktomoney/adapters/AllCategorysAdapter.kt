@@ -4,20 +4,21 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import ru.itis.looktomoney.databinding.ItemForAllCategorysBinding
 import ru.itis.looktomoney.databinding.ItemParentChangeBinding
-import ru.itis.looktomoney.domain.Change
+import ru.itis.looktomoney.domain.Category
 import ru.itis.looktomoney.domain.Day
-import ru.itis.looktomoney.holders.ChildHolder
+import ru.itis.looktomoney.holders.AllCategorysHolder
 import ru.itis.looktomoney.holders.ParentHolder
 
-class ParentAdapter(
-    var list : ArrayList<Day>,
-    val context: Context
-) : RecyclerView.Adapter<ParentHolder>(){
+class AllCategorysAdapter(
+    var list : ArrayList<Category>,
+    val context : Context
+) : RecyclerView.Adapter<AllCategorysHolder>(){
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ParentHolder {
-        return ParentHolder(
-            ItemParentChangeBinding.inflate(
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AllCategorysHolder {
+        return AllCategorysHolder(
+            ItemForAllCategorysBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false
@@ -29,11 +30,11 @@ class ParentAdapter(
         return list.size
     }
 
-    override fun onBindViewHolder(holder: ParentHolder, position: Int) {
+    override fun onBindViewHolder(holder: AllCategorysHolder, position: Int) {
         holder.onBind(list[position])
     }
 
-    fun updateDataset(newList: ArrayList<Day>) {
+    fun updateDataset(newList: ArrayList<Category>) {
         list = newList
     }
 }

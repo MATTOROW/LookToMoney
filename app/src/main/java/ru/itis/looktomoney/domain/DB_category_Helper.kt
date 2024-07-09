@@ -4,6 +4,8 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import ru.itis.looktomoney.R
+import ru.itis.looktomoney.adapters.Icons
 
 class DB_category_Helper(
     val context : Context,
@@ -39,6 +41,15 @@ class DB_category_Helper(
 
     fun getAllOutcomeCategorys() : ArrayList<Category>{
         return getAll("Outcome")
+    }
+
+    fun deleteThisCategory(category : Category){
+        val db = this.writableDatabase
+
+        db.execSQL("DELETE FROM categorys WHERE name = '${category.name}' AND type = '${category.type}' ")
+
+        val db_days = DB_days_Helper(context, null)
+        db_days.replaceAllWithoutThisCategory(category)
     }
 
 

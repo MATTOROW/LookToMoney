@@ -29,41 +29,61 @@
             android:layout_height="match_parent"
             android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/tv_child_cat_name"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:gravity="center"
-                android:text="TextView"
-                tools:text="Категория"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="32dp"
+                android:orientation="vertical"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/tv_cat_chils_sum"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent">
 
-            <TextView
-                android:id="@+id/tv_child_wallet_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="48dp"
-                android:gravity="center"
-                android:text="TextView"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@id/tv_child_cat_name"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="Счёт" />
+                <TextView
+                    android:id="@+id/tv_child_cat_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-condensed-medium"
+                    android:gravity="center"
+                    android:text="TextView"
+                    android:textSize="14sp"
+                    tools:text="Категория" />
+
+                <TextView
+                    android:id="@+id/tv_child_wallet_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:fontFamily="casual"
+                    android:gravity="center"
+                    android:text="TextView"
+                    android:textSize="10sp"
+                    tools:text="Счёт" />
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/tv_cat_chils_sum"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
-                android:layout_marginEnd="48dp"
+                android:layout_marginEnd="16dp"
                 android:text="TextView"
-                tools:text="Сумма"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/iv_delete_change"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.484"
+                tools:text="Сумма" />
+
+            <ImageView
+                android:id="@+id/iv_delete_change"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginEnd="8dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@android:drawable/ic_menu_delete" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </LinearLayout>
