@@ -18,6 +18,9 @@ object Icons {
         R.drawable.icon_9,
         R.drawable.icon_10,
         R.drawable.icon_11,
-        R.drawable.icon_12
+        R.drawable.icon_12,
+        R.drawable.icon_13,
+        R.drawable.icon_14,
+        R.drawable.icon_15
     )
 }
