@@ -9,4 +9,6 @@
     <string name="addCategory_title">Add Category</string>
     <string name="addChange_title">Add change</string>
     <string name="allChanges_title">Transactions</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
