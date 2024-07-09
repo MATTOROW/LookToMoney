@@ -1,6 +1,8 @@
 package ru.itis.looktomoney.holders
 
+import android.content.Context
 import android.graphics.Color
+import android.icu.text.DecimalFormat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import ru.itis.looktomoney.adapters.ChildAdapter
@@ -10,11 +12,12 @@ import ru.itis.looktomoney.domain.Day
 
 class ParentHolder(
     private val binding : ItemParentChangeBinding,
+    val context: Context
 ) : ViewHolder(binding.root) {
 
     fun onBind(day : Day){
         binding.run {
-            parentRv.adapter = ChildAdapter(day.changes)
+            parentRv.adapter = ChildAdapter(day.changes, context, day.data)
             parentRv.layoutManager = LinearLayoutManager(binding.root.context)
 
             tvParentDate.text = day.data.toString()
@@ -26,7 +29,15 @@ class ParentHolder(
                     numb -= chr.numb
                 }
             }
-            tvParentSum.text = numb.toString()
+
+            if (numb > 0){
+                tvParentSum.text = DecimalFormat("#0.00").format(numb) + " ₽"
+                tvParentSum.setTextColor(Color.GREEN)
+            }
+            if (numb < 0){
+                tvParentSum.text = DecimalFormat("#0.00").format((numb * -1)) + " ₽"
+                tvParentSum.setTextColor(Color.RED)
+            }
         }
     }
 }

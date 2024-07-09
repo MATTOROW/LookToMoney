@@ -25,7 +25,7 @@ class AllChangesFragment : Fragment(R.layout.fragment_all_changes) {
 
         binding?.run {
             val db = DB_days_Helper(requireContext(), null)
-            rvAllChanges.adapter = ParentAdapter(db.getAll())
+            rvAllChanges.adapter = ParentAdapter(db.getAll(), requireContext())
             rvAllChanges.layoutManager = LinearLayoutManager(requireContext())
         }
     }

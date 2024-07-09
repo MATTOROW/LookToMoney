@@ -1,5 +1,6 @@
 package ru.itis.looktomoney.adapters
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -11,6 +12,7 @@ import ru.itis.looktomoney.holders.ParentHolder
 
 class ParentAdapter(
     var list : ArrayList<Day>,
+    val context: Context
 ) : RecyclerView.Adapter<ParentHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ParentHolder {
@@ -19,7 +21,7 @@ class ParentAdapter(
                 LayoutInflater.from(parent.context),
                 parent,
                 false
-            )
+            ), context
         )
     }
 
