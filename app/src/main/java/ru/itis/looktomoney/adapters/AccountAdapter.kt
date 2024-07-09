@@ -6,13 +6,15 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import ru.itis.looktomoney.databinding.ItemAccountBinding
 import ru.itis.looktomoney.domain.Wallet
+import ru.itis.looktomoney.fragments.accounts.AccountMainFragment
 import ru.itis.looktomoney.holders.AccountHolder
 import kotlin.reflect.jvm.internal.impl.descriptors.Visibilities.Private
 
 
 class AccountAdapter(
     var list : ArrayList<Wallet>,
-    private val context : Context
+    private val context : Context,
+    private val fragment: AccountMainFragment
 ) : RecyclerView.Adapter<AccountHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AccountHolder {
@@ -23,7 +25,8 @@ class AccountAdapter(
                 false
             ),
             context,
-            this
+            this,
+            fragment
         )
     }
 

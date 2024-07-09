@@ -12,11 +12,13 @@ import ru.itis.looktomoney.databinding.ItemAccountBinding
 import ru.itis.looktomoney.domain.DB_days_Helper
 import ru.itis.looktomoney.domain.DB_wallet_Helper
 import ru.itis.looktomoney.domain.Wallet
+import ru.itis.looktomoney.fragments.accounts.AccountMainFragment
 
 class AccountHolder(
     private val binding : ItemAccountBinding,
     private val fragmnet_context : Context,
-    private val adapter: AccountAdapter
+    private val adapter: AccountAdapter,
+    private val parentFragment: AccountMainFragment
 ) : ViewHolder(binding.root) {
 
     fun onBind(wallet : Wallet){
@@ -35,9 +37,10 @@ class AccountHolder(
                             val wl : Wallet? = db.getByName(wallet.name)
 
                             db.delteByName(wl!!.name)
-                            val ind = adapter.list.indexOf(adapter.list.find{it.name.equals(wl.name)})
+                            val ind = adapterPosition
                             adapter.updateDataset(db.getAll())
                             adapter.notifyItemRemoved(ind)
+                            parentFragment.updateAllSum()
 
                             val db_days = DB_days_Helper(fragmnet_context, null)
                             db_days.replaceAllWithoutThisWallet(wl)
