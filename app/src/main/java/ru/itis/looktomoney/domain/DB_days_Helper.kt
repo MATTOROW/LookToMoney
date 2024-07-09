@@ -97,6 +97,11 @@ class DB_days_Helper (
 
         for (ch in day.changes){
             if (ch.category!!.name != category.name || ch.category!!.type != category.type) arr.add(ch)
+            else{
+                val db_wallet = DB_wallet_Helper(context,null)
+                if (ch.category!!.type == "Income") db_wallet.minusToWallet(ch.wallet!!.name, ch.numb)
+                else db_wallet.plusToWallet(ch.wallet!!.name, ch.numb)
+            }
         }
 
         if (arr.size != 0){
@@ -169,6 +174,9 @@ class DB_days_Helper (
                 || ch.numb != change.numb
                 ) arr.add(ch)
             else{
+                val db_wallet = DB_wallet_Helper(context,null)
+                if (ch.category!!.type == "Income") db_wallet.minusToWallet(ch.wallet!!.name, ch.numb)
+                else db_wallet.plusToWallet(ch.wallet!!.name, ch.numb)
                 flag = true
             }
         }
