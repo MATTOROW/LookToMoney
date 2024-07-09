@@ -89,4 +89,11 @@ class DB_wallet_Helper(
         db.close()
         return list
     }
+
+    fun getAllSum() : Double {
+        val db = this.readableDatabase
+        val ans = db.rawQuery("SELECT SUM(numb) from wallets", null)
+        ans.moveToFirst()
+        return ans.getDouble(0)
+    }
 }

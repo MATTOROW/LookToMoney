@@ -1,10 +1,9 @@
 package ru.itis.looktomoney.fragments.accounts
 
+import android.icu.text.DecimalFormat
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import ru.itis.looktomoney.R
@@ -22,6 +21,7 @@ class AccountMainFragment : Fragment(R.layout.fragment_account_main) {
         val dbWalletHelper = DB_wallet_Helper(requireContext(), null)
 
         binding?.run {
+            tvAllMoney.text = DecimalFormat("#0.00").format(dbWalletHelper.getAllSum()) + " ₽"
             rvAccContainer.adapter = AccountAdapter(dbWalletHelper.getAll(), requireContext())
             rvAccContainer.layoutManager = LinearLayoutManager(requireContext())
 
