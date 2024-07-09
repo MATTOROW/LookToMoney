@@ -6,18 +6,20 @@ import android.icu.text.DecimalFormat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import ru.itis.looktomoney.adapters.ChildAdapter
+import ru.itis.looktomoney.adapters.ParentAdapter
 import ru.itis.looktomoney.databinding.ItemParentChangeBinding
 import ru.itis.looktomoney.domain.Change
 import ru.itis.looktomoney.domain.Day
 
 class ParentHolder(
     private val binding : ItemParentChangeBinding,
-    val context: Context
+    val context: Context,
+    val adapter: ParentAdapter
 ) : ViewHolder(binding.root) {
 
     fun onBind(day : Day){
         binding.run {
-            parentRv.adapter = ChildAdapter(day.changes, context, day.data)
+            parentRv.adapter = ChildAdapter(day.changes, context, day.data, this@ParentHolder)
             parentRv.layoutManager = LinearLayoutManager(binding.root.context)
 
             tvParentDate.text = day.data.toString()
@@ -39,5 +41,10 @@ class ParentHolder(
                 tvParentSum.setTextColor(Color.RED)
             }
         }
+    }
+
+    fun removeDate() {
+        adapter.notifyItemRemoved(adapterPosition)
+        adapter.list.removeAt(adapterPosition + 1)
     }
 }

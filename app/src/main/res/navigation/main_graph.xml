@@ -24,4 +24,9 @@
         android:name="ru.itis.looktomoney.fragments.categories.CategoriesContainerFragment"
         android:label="fragment_categories_container"
         tools:layout="@layout/fragment_categories_container" />
+    <fragment
+        android:id="@+id/categoryInfoFragment"
+        android:name="ru.itis.looktomoney.fragments.CategoryInfoFragment"
+        android:label="fragment_category_info"
+        tools:layout="@layout/fragment_category_info" />
 </navigation>

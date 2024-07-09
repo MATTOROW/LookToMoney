@@ -21,7 +21,7 @@ class ParentAdapter(
                 LayoutInflater.from(parent.context),
                 parent,
                 false
-            ), context
+            ), context, this
         )
     }
 
