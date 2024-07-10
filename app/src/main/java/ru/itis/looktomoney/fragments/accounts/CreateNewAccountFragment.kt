@@ -33,7 +33,7 @@ class CreateNewAccountFragment : Fragment(R.layout.fragment_create_new_account) 
                 object : AdapterView.OnItemSelectedListener {
                     override fun onItemSelected(
                         parent: AdapterView<*>,
-                        view: View,
+                        view: View?,
                         position: Int,
                         id: Long
                     ) {
