@@ -30,14 +30,16 @@ class CategoryMainFragment : Fragment(R.layout.fragment_category_main) {
             rvAllCategorys.layoutManager = LinearLayoutManager(requireContext())
 
             tvChoiceInput.setOnClickListener {
-                tvChoiceInput.setTextColor(Color.GREEN)
-                tvChoiceOutput.setTextColor(Color.RED)
+                tvChoiceInput.setTextColor(resources.getColor(R.color.medium_blue))
+                tvChoiceOutput.setTextColor(resources.getColor(R.color.light_gray))
                 rvAllCategorys.adapter = AllCategorysAdapter(db.getAllIncomeCategorys(), requireContext())
             }
 
+            tvChoiceInput.callOnClick()
+
             tvChoiceOutput.setOnClickListener {
-                tvChoiceInput.setTextColor(Color.RED)
-                tvChoiceOutput.setTextColor(Color.GREEN)
+                tvChoiceInput.setTextColor(resources.getColor(R.color.light_gray))
+                tvChoiceOutput.setTextColor(resources.getColor(R.color.medium_blue))
                 rvAllCategorys.adapter = AllCategorysAdapter(db.getAllOutcomeCategorys(), requireContext())
             }
 

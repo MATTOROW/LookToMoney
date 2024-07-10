@@ -6,6 +6,7 @@ import android.content.DialogInterface
 import android.graphics.Color
 import android.icu.text.DecimalFormat
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import ru.itis.looktomoney.R
 import ru.itis.looktomoney.adapters.AccountAdapter
 import ru.itis.looktomoney.adapters.ChildAdapter
 import ru.itis.looktomoney.databinding.ItemChildChangeBinding
@@ -29,10 +30,12 @@ class ChildHolder(
             ivCatChildIcon.setImageResource(change.category!!.icon)
             tvChildWalletName.text = change.wallet!!.name
             tvChildCatName.text = change.category!!.name
-            tvCatChilsSum.text = DecimalFormat("#0.00").format(change.numb) + " ₽"
-            if (change.category!!.type.equals("Income")) tvCatChilsSum.setTextColor(Color.GREEN)
-            else{
-                tvCatChilsSum.setTextColor(Color.RED)
+            if (change.category!!.type.equals("Income")) {
+                tvCatChilsSum.text = "+" + DecimalFormat("#0.00").format(change.numb) + " ₽"
+                tvCatChilsSum.setTextColor(binding.root.resources.getColor(R.color.green))
+            } else {
+                tvCatChilsSum.text = "-" + DecimalFormat("#0.00").format(change.numb) + " ₽"
+                tvCatChilsSum.setTextColor(binding.root.resources.getColor(R.color.red))
             }
 
             ivDeleteChange.setOnClickListener {

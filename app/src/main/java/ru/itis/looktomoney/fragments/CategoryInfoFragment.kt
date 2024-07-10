@@ -42,24 +42,21 @@ class CategoryInfoFragment : Fragment(R.layout.fragment_category_info) {
         }
         adapter = dbCategory?.let { categoryListIn }
         binding?.run {
-            rvInfo.adapter = adapter
-            rvInfo.layoutManager = LinearLayoutManager(requireContext())
-            choiceIncome.setTextColor(Color.GREEN)
-            choiceExpenses.setTextColor(Color.RED)
             choiceExpenses.setOnClickListener {
-                choiceIncome.setTextColor(Color.RED)
-                choiceExpenses.setTextColor(Color.GREEN)
+                choiceIncome.setTextColor(resources.getColor(R.color.light_gray))
+                choiceExpenses.setTextColor(resources.getColor(R.color.medium_blue))
                 adapter = dbCategory?.let { categoryListOut }
                 rvInfo.adapter = adapter
                 rvInfo.layoutManager = LinearLayoutManager(requireContext())
             }
             choiceIncome.setOnClickListener {
-                choiceIncome.setTextColor(Color.GREEN)
-                choiceExpenses.setTextColor(Color.RED)
+                choiceIncome.setTextColor(resources.getColor(R.color.medium_blue))
+                choiceExpenses.setTextColor(resources.getColor(R.color.light_gray))
                 adapter = dbCategory?.let { categoryListIn }
                 rvInfo.adapter = adapter
                 rvInfo.layoutManager = LinearLayoutManager(requireContext())
             }
+            choiceIncome.callOnClick()
         }
     }
 

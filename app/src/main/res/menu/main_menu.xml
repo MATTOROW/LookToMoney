@@ -12,6 +12,6 @@
         android:icon="@drawable/ic_transaction"/>
 
     <item android:id="@+id/categoryInfoFragment"
-        android:title="@string/categoryInfo_title"
+        android:title="@string/statistic_title"
         android:icon="@drawable/ic_infografic"/>
 </menu>

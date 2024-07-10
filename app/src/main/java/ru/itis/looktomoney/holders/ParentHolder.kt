@@ -5,6 +5,7 @@ import android.graphics.Color
 import android.icu.text.DecimalFormat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import ru.itis.looktomoney.R
 import ru.itis.looktomoney.adapters.ChildAdapter
 import ru.itis.looktomoney.adapters.ParentAdapter
 import ru.itis.looktomoney.databinding.ItemParentChangeBinding
@@ -45,12 +46,12 @@ class ParentHolder(
         }
 
         if (numb > 0){
-            binding.tvParentSum.text = DecimalFormat("#0.00").format(numb) + " ₽"
-            binding.tvParentSum.setTextColor(Color.GREEN)
+            binding.tvParentSum.text = "+" + DecimalFormat("#0.00").format(numb) + " ₽"
+            binding.tvParentSum.setTextColor(binding.root.resources.getColor(R.color.green))
         }
         if (numb < 0){
-            binding.tvParentSum.text = DecimalFormat("#0.00").format((numb * -1)) + " ₽"
-            binding.tvParentSum.setTextColor(Color.RED)
+            binding.tvParentSum.text = "-" + DecimalFormat("#0.00").format((numb * -1)) + " ₽"
+            binding.tvParentSum.setTextColor(binding.root.resources.getColor(R.color.red))
         }
     }
 }

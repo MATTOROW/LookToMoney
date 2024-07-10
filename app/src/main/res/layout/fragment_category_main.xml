@@ -14,7 +14,10 @@
         android:layout_height="wrap_content"
         android:background="@color/medium_blue"
         android:gravity="center"
-        android:padding="20dp"
+        android:paddingLeft="10dp"
+        android:paddingTop="26dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="26dp"
         android:text="@string/allCategories_title"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -32,24 +35,26 @@
 
         <TextView
             android:id="@+id/tv_choice_input"
+            style="@style/primaryTextBlack"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="5dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="Доход"
+            android:text="@string/income"
             android:textSize="22sp" />
 
         <TextView
             android:id="@+id/tv_choice_output"
+            style="@style/primaryTextBlack"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginStart="5dp"
             android:layout_marginEnd="10dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="Расход"
+            android:text="@string/outcome"
             android:textSize="22sp" />
     </LinearLayout>
 
