@@ -35,7 +35,7 @@ class AddCategoryFragment : Fragment(R.layout.fragment_add_category) {
 
             var polz_icon = -1
 
-            spinner.adapter = IconSpinnerAdapter(requireContext(), Icons.list)
+            spinnerCatIcon.adapter = IconSpinnerAdapter(requireContext(), Icons.list)
             var db = DB_category_Helper(this.root.context, null)
 
             val itemSelectedListener: AdapterView.OnItemSelectedListener =
@@ -54,7 +54,7 @@ class AddCategoryFragment : Fragment(R.layout.fragment_add_category) {
                     override fun onNothingSelected(parent: AdapterView<*>?) {
                     }
                 }
-            spinner.onItemSelectedListener = itemSelectedListener
+            spinnerCatIcon.onItemSelectedListener = itemSelectedListener
 
             choiceInputInCat.setOnClickListener{
                 polz_choice = 0
@@ -70,9 +70,9 @@ class AddCategoryFragment : Fragment(R.layout.fragment_add_category) {
 
 
             btnCategoryConfirm.setOnClickListener {
-                var text = polzName.text.toString()
+                var text = etCatName.text.toString()
 
-                var desk = polzDesk.text.toString()
+                var desk = etCatDesc.text.toString()
 
 
                 if (text == "" || polz_choice == -1 || polz_icon == -1){

@@ -48,7 +48,7 @@ class CreateNewAccountFragment : Fragment(R.layout.fragment_create_new_account) 
 
             spinnerIconWallet.onItemSelectedListener = itemIconSelected
 
-            confirmationButton.setOnClickListener {
+            btnAccConfirm.setOnClickListener {
                 var text = inputAccName.text.toString()
                 var numb : Double= -1.0
                 try{

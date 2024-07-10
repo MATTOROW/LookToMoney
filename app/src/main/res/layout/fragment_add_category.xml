@@ -13,7 +13,7 @@
         android:background="@color/medium_blue"
         android:gravity="center"
         android:orientation="horizontal"
-        android:padding="10dp"
+        android:padding="13dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -82,7 +82,7 @@
     </LinearLayout>
 
     <EditText
-        android:id="@+id/polz_name"
+        android:id="@+id/etCatName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="68dp"
@@ -92,10 +92,10 @@
         android:textSize="22sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner" />
+        app:layout_constraintTop_toBottomOf="@+id/spinner_catIcon" />
 
     <EditText
-        android:id="@+id/polz_desk"
+        android:id="@+id/etCatDesc"
         android:layout_width="206dp"
         android:layout_height="56dp"
         android:layout_marginTop="56dp"
@@ -105,11 +105,11 @@
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/polz_name" />
+        app:layout_constraintTop_toBottomOf="@+id/etCatName" />
 
 
     <Spinner
-        android:id="@+id/spinner"
+        android:id="@+id/spinner_catIcon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="2dp"

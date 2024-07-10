@@ -48,7 +48,7 @@ class AddChangeFragment : Fragment(R.layout.fragment_add_change) {
 
             // Ввод через календарик
 
-            polzDate.setOnFocusChangeListener { v, hasFocus ->
+            etChangeDate.setOnFocusChangeListener { v, hasFocus ->
                 if (hasFocus) {
                     val cal: Calendar = Calendar.getInstance()
                     val year: Int = cal.get(Calendar.YEAR)
@@ -60,7 +60,7 @@ class AddChangeFragment : Fragment(R.layout.fragment_add_change) {
                         android.R.style.Theme_Holo_Dialog_MinWidth,
                         { datePicker, year, month, day ->
                             val date = "$day.$month.$year"
-                            polzDate.setText(date)
+                            etChangeDate.setText(date)
                         },
                         year,
                         month,
@@ -71,7 +71,7 @@ class AddChangeFragment : Fragment(R.layout.fragment_add_change) {
                 }
             }
 
-            polzDate.setOnClickListener {
+            etChangeDate.setOnClickListener {
                 val cal: Calendar = Calendar.getInstance()
                 val year: Int = cal.get(Calendar.YEAR)
                 val month: Int = cal.get(Calendar.MONTH)
@@ -82,7 +82,7 @@ class AddChangeFragment : Fragment(R.layout.fragment_add_change) {
                     android.R.style.Theme_Holo_Dialog_MinWidth,
                     { datePicker, year, month, day ->
                         val date = "$day.$month.$year"
-                        polzDate.setText(date)
+                        etChangeDate.setText(date)
                     },
                     year,
                     month,
@@ -93,18 +93,18 @@ class AddChangeFragment : Fragment(R.layout.fragment_add_change) {
             }
 
 
-            choiceInput.setOnClickListener {
+            choiceInputChange.setOnClickListener {
                 polz_choice_type = 0
-                choiceInput.setTextColor(Color.GREEN)
-                choiceOutput.setTextColor(Color.RED)
+                choiceInputChange.setTextColor(Color.GREEN)
+                choiceOutputChange.setTextColor(Color.RED)
                 spinnerCategory.adapter =
                     CategorySpinnerAdapter(requireContext(), db_category.getAllIncomeCategorys())
             }
 
-            choiceOutput.setOnClickListener {
+            choiceOutputChange.setOnClickListener {
                 polz_choice_type = 1
-                choiceInput.setTextColor(Color.RED)
-                choiceOutput.setTextColor(Color.GREEN)
+                choiceInputChange.setTextColor(Color.RED)
+                choiceOutputChange.setTextColor(Color.GREEN)
                 spinnerCategory.adapter =
                     CategorySpinnerAdapter(requireContext(), db_category.getAllOutcomeCategorys())
             }
@@ -153,7 +153,7 @@ class AddChangeFragment : Fragment(R.layout.fragment_add_change) {
             btnChangeConfirm.setOnClickListener {
                 var numb = -1.0
                 try {
-                    numb = polzNumber.text.toString().toDouble()
+                    numb = etCangeSum.text.toString().toDouble()
                 } catch (_: Exception) {
                 }
 
@@ -164,8 +164,8 @@ class AddChangeFragment : Fragment(R.layout.fragment_add_change) {
 //                 } catch (_ : Exception){}
 
 
-                if (DateValidatorUsingDateFormat("dd.MM.yyyy").isValid(polzDate.text.toString())) {
-                    date = MyDate(polzDate.text.toString())
+                if (DateValidatorUsingDateFormat("dd.MM.yyyy").isValid(etChangeDate.text.toString())) {
+                    date = MyDate(etChangeDate.text.toString())
                 }
 
 

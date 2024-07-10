@@ -41,7 +41,7 @@
             android:textSize="24sp" />
 
         <ImageView
-            android:id="@+id/confirmation_button"
+            android:id="@+id/btnAccConfirm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0"
