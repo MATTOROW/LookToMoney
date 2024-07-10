@@ -179,8 +179,6 @@ class AddChangeFragment : Fragment(R.layout.fragment_add_change) {
                         date
                     )
                     Toast.makeText(this.root.context, "Успешно", Toast.LENGTH_SHORT).show()
-                    spinnerWallet.adapter =
-                        WalletSpinnerAdapter(requireContext(), db_wallet.getAll())
                 }
             }
 

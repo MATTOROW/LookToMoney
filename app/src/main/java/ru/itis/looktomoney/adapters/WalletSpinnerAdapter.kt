@@ -25,7 +25,7 @@ class WalletSpinnerAdapter(
     }
 
     override fun getItemId(p0: Int): Long {
-        return 0
+        return p0.toLong()
     }
 
     override fun getView(p0: Int, p1: View?, p2: ViewGroup?): View {

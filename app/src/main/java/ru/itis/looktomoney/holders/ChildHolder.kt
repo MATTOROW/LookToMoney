@@ -47,8 +47,9 @@ class ChildHolder(
                             if (adapter.list.size == 1) {
                                 parentHolder.removeDate()
                             } else {
-                                adapter.notifyItemRemoved(adapterPosition)
-                                adapter.list.removeAt(adapterPosition + 1)
+                                val ind = adapterPosition
+                                adapter.notifyItemRemoved(ind)
+                                adapter.list.removeAt(ind)
                             }
                             parentHolder.updateAllSum()
                         }
