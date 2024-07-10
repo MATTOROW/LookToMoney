@@ -13,7 +13,10 @@
         android:background="@color/medium_blue"
         android:gravity="center"
         android:orientation="vertical"
-        android:padding="10dp"
+        android:paddingLeft="10dp"
+        android:paddingTop="20dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">

@@ -9,4 +9,26 @@
         <item name="android:textColor">@color/black</item>
         <item name="fontFamily">@font/roboto_regular</item>
     </style>
+
+    <style name="primaryTextWhite" parent="allTextWhite">
+        <item name="android:fontFamily">@font/roboto_bold</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="primaryTextBlack" parent="allTextBlack">
+        <item name="android:fontFamily">@font/roboto_bold</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="secondaryTextWhite" parent="allTextWhite">
+        <item name="android:fontFamily">@font/roboto_regular</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="secondaryTextBlack" parent="allTextBlack">
+        <item name="android:fontFamily">@font/roboto_regular</item>
+        <item name="android:textSize">16sp</item>
+    </style>
 </resources>

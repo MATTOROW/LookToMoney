@@ -14,6 +14,7 @@ class CategoryInfoHolder(
         binding.run{
             tvCategory.text = info.category.name
             tvMoney.text = info.info
+            ivCatImage.setImageResource(info.category.icon)
         }
     }
 }

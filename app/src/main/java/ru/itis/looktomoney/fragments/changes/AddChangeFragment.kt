@@ -95,16 +95,18 @@ class AddChangeFragment : Fragment(R.layout.fragment_add_change) {
 
             choiceInputChange.setOnClickListener {
                 polz_choice_type = 0
-                choiceInputChange.setTextColor(Color.GREEN)
-                choiceOutputChange.setTextColor(Color.RED)
+                choiceInputChange.setTextColor(resources.getColor(R.color.medium_blue))
+                choiceOutputChange.setTextColor(resources.getColor(R.color.light_gray))
                 spinnerCategory.adapter =
                     CategorySpinnerAdapter(requireContext(), db_category.getAllIncomeCategorys())
             }
 
+            choiceInputChange.callOnClick()
+
             choiceOutputChange.setOnClickListener {
                 polz_choice_type = 1
-                choiceInputChange.setTextColor(Color.RED)
-                choiceOutputChange.setTextColor(Color.GREEN)
+                choiceInputChange.setTextColor(resources.getColor(R.color.light_gray))
+                choiceOutputChange.setTextColor(resources.getColor(R.color.medium_blue))
                 spinnerCategory.adapter =
                     CategorySpinnerAdapter(requireContext(), db_category.getAllOutcomeCategorys())
             }

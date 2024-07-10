@@ -58,14 +58,16 @@ class AddCategoryFragment : Fragment(R.layout.fragment_add_category) {
 
             choiceInputInCat.setOnClickListener{
                 polz_choice = 0
-                choiceInputInCat.setTextColor(Color.GREEN)
-                choiceOutputInCat.setTextColor(Color.RED)
+                choiceInputInCat.setTextColor(resources.getColor(R.color.medium_blue))
+                choiceOutputInCat.setTextColor(resources.getColor(R.color.light_gray))
             }
+
+            choiceInputInCat.callOnClick()
 
             choiceOutputInCat.setOnClickListener{
                 polz_choice = 1
-                choiceInputInCat.setTextColor(Color.RED)
-                choiceOutputInCat.setTextColor(Color.GREEN)
+                choiceInputInCat.setTextColor(resources.getColor(R.color.light_gray))
+                choiceOutputInCat.setTextColor(resources.getColor(R.color.medium_blue))
             }
 
 

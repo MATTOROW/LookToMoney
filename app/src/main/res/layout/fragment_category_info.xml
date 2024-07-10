@@ -6,38 +6,57 @@
     android:layout_height="match_parent"
     tools:context=".fragments.CategoryInfoFragment">
 
+    <TextView
+        android:id="@+id/tvCategoryInfo"
+        style="@style/allTextWhite"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/medium_blue"
+        android:gravity="center"
+        android:paddingLeft="10dp"
+        android:paddingTop="26dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="26dp"
+        android:text="@string/statistic_title"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="0dp"
-        android:layout_height="79dp"
+        android:layout_height="50dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@id/rvInfo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/tvCategoryInfo">
 
 
         <TextView
             android:id="@+id/choice_income"
+            style="@style/primaryTextBlack"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="5dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="Доходы"
+            android:text="@string/income"
             android:textSize="22sp" />
 
         <TextView
             android:id="@+id/choice_expenses"
+            style="@style/primaryTextBlack"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginStart="5dp"
             android:layout_marginEnd="10dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="Расходы"
+            android:text="@string/outcome"
             android:textSize="22sp" />
     </LinearLayout>
 

@@ -10,5 +10,11 @@
     <string name="addChange_title">Добавить операцию</string>
     <string name="allChanges_title">Операции</string>
     <string name="allCategories_title">Категории</string>
-    <string name="categoryInfo_title">Инофрмация по категориям</string>
+    <string name="statistic_title">Статистика</string>
+    <string name="income">Доход</string>
+    <string name="outcome">Расход</string>
+    <string name="description">Описание</string>
+    <string name="name">Название</string>
+    <string name="input_sum_hint">Введите сумму</string>
+    <string name="date_format">ДД.ММ.ГГГГ</string>
 </resources>

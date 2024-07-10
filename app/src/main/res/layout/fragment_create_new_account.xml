@@ -13,7 +13,10 @@
         android:background="@color/medium_blue"
         android:gravity="center"
         android:orientation="horizontal"
-        android:padding="10dp"
+        android:paddingLeft="10dp"
+        android:paddingTop="20dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -44,8 +47,10 @@
             android:id="@+id/btnAccConfirm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="4dp"
             android:layout_weight="0"
-            android:src="@drawable/ic_plus" />
+            android:src="@drawable/ic_plus"
+            app:tint="@color/white" />
     </LinearLayout>
 
     <ScrollView
@@ -83,6 +88,7 @@
                     android:ems="10"
                     android:hint="@string/input_acc_name"
                     android:inputType="text"
+                    android:maxLength="15"
                     android:minHeight="48dp" />
             </LinearLayout>
 
