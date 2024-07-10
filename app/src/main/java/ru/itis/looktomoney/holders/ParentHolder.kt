@@ -17,34 +17,40 @@ class ParentHolder(
     val adapter: ParentAdapter
 ) : ViewHolder(binding.root) {
 
+    private lateinit var day: Day
+
     fun onBind(day : Day){
         binding.run {
+            this@ParentHolder.day = day
             parentRv.adapter = ChildAdapter(day.changes, context, day.data, this@ParentHolder)
             parentRv.layoutManager = LinearLayoutManager(binding.root.context)
 
             tvParentDate.text = day.data.toString()
-
-            var numb : Double = 0.0
-            for (chr in day.changes){
-                if (chr.category!!.type.equals("Income")) numb += chr.numb
-                else{
-                    numb -= chr.numb
-                }
-            }
-
-            if (numb > 0){
-                tvParentSum.text = DecimalFormat("#0.00").format(numb) + " ₽"
-                tvParentSum.setTextColor(Color.GREEN)
-            }
-            if (numb < 0){
-                tvParentSum.text = DecimalFormat("#0.00").format((numb * -1)) + " ₽"
-                tvParentSum.setTextColor(Color.RED)
-            }
+            updateAllSum()
         }
     }
 
     fun removeDate() {
         adapter.notifyItemRemoved(adapterPosition)
         adapter.list.removeAt(adapterPosition + 1)
+    }
+
+    fun updateAllSum() {
+        var numb : Double = 0.0
+        for (chr in day.changes){
+            if (chr.category!!.type.equals("Income")) numb += chr.numb
+            else{
+                numb -= chr.numb
+            }
+        }
+
+        if (numb > 0){
+            binding.tvParentSum.text = DecimalFormat("#0.00").format(numb) + " ₽"
+            binding.tvParentSum.setTextColor(Color.GREEN)
+        }
+        if (numb < 0){
+            binding.tvParentSum.text = DecimalFormat("#0.00").format((numb * -1)) + " ₽"
+            binding.tvParentSum.setTextColor(Color.RED)
+        }
     }
 }

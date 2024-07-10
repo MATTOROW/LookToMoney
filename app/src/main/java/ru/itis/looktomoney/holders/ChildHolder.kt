@@ -47,6 +47,7 @@ class ChildHolder(
                                 adapter.notifyItemRemoved(adapterPosition)
                                 adapter.list.removeAt(adapterPosition + 1)
                             }
+                            parentHolder.updateAllSum()
                         }
                     }
 
