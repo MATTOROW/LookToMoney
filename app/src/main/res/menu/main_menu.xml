@@ -7,11 +7,7 @@
         android:title="@string/allCategories_title"
         android:icon="@drawable/ic_category"/>
 
-    <item android:id="@+id/addChangeFragment"
-        android:title="@string/addChange_title"
-        android:icon="@drawable/ic_transaction"/>
-
-    <item android:id="@+id/allChangesFragment"
+    <item android:id="@+id/changesContainerFragment"
         android:title="@string/allChanges_title"
         android:icon="@drawable/ic_transaction"/>
 

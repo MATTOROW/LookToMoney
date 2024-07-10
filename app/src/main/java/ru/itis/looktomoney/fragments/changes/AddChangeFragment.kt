@@ -1,7 +1,6 @@
-package ru.itis.looktomoney.fragments
+package ru.itis.looktomoney.fragments.changes
 
 import android.app.DatePickerDialog
-import android.app.DatePickerDialog.OnDateSetListener
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.icu.util.Calendar
@@ -10,6 +9,7 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import ru.itis.looktomoney.DateValidator.DateValidatorUsingDateFormat
 import ru.itis.looktomoney.R
 import ru.itis.looktomoney.adapters.CategorySpinnerAdapter
@@ -41,6 +41,10 @@ class AddChangeFragment : Fragment(R.layout.fragment_add_change) {
             val db_wallet = DB_wallet_Helper(this.root.context, null)
 
             spinnerWallet.adapter = WalletSpinnerAdapter(requireContext(), db_wallet.getAll())
+
+            btnGoBackChange.setOnClickListener {
+                findNavController().popBackStack()
+            }
 
             // Ввод через календарик
 
@@ -146,7 +150,7 @@ class AddChangeFragment : Fragment(R.layout.fragment_add_change) {
                 }
             spinnerWallet.onItemSelectedListener = walletSelected
 
-            addToDataBaseButton.setOnClickListener {
+            btnChangeConfirm.setOnClickListener {
                 var numb = -1.0
                 try {
                     numb = polzNumber.text.toString().toDouble()

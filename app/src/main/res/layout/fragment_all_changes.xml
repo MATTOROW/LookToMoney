@@ -4,16 +4,44 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.AllChangesFragment">
+    tools:context=".fragments.changes.AllChangesFragment">
 
+
+    <TextView
+        android:id="@+id/tvAllChangesTitle"
+        style="@style/allTextWhite"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/medium_blue"
+        android:gravity="center"
+        android:padding="20dp"
+        android:text="@string/allChanges_title"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_allChanges"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        tools:listitem="@layout/item_parent_change"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/tvAllChangesTitle"
+        tools:listitem="@layout/item_parent_change" />
+
+    <ImageButton
+        android:id="@+id/btnAddChange"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/add_button"
+        android:padding="10dp"
+        android:src="@drawable/ic_plus"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:tint="@color/white"
+        tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
 </androidx.constraintlayout.widget.ConstraintLayout>

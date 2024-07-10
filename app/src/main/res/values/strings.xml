@@ -10,5 +10,7 @@
     <string name="addChange_title">Add change</string>
     <string name="allChanges_title">Transactions</string>
     <string name="allCategories_title">Categories</string>
-    <string name="categoryInfo_title">Category info</string>string>
+    <string name="categoryInfo_title">Category info</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>string>
 </resources>

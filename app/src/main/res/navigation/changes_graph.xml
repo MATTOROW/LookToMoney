@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/changes_graph"
+    app:startDestination="@id/allChangesFragment">
+    <fragment
+        android:id="@+id/addChangeFragment"
+        android:name="ru.itis.looktomoney.fragments.changes.AddChangeFragment"
+        android:label="AddChangeFragment" />
+    <fragment
+        android:id="@+id/allChangesFragment"
+        android:name="ru.itis.looktomoney.fragments.changes.AllChangesFragment"
+        android:label="fragment_all_changes"
+        tools:layout="@layout/fragment_all_changes" >
+        <action
+            android:id="@+id/action_allChangesFragment_to_addChangeFragment"
+            app:destination="@id/addChangeFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
+    </fragment>
+</navigation>

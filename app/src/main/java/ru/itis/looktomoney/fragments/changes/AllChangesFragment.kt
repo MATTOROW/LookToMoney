@@ -1,8 +1,9 @@
-package ru.itis.looktomoney.fragments
+package ru.itis.looktomoney.fragments.changes
 
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import ru.itis.looktomoney.R
 import ru.itis.looktomoney.adapters.ParentAdapter
@@ -27,6 +28,10 @@ class AllChangesFragment : Fragment(R.layout.fragment_all_changes) {
             val db = DB_days_Helper(requireContext(), null)
             rvAllChanges.adapter = ParentAdapter(db.getAll(), requireContext())
             rvAllChanges.layoutManager = LinearLayoutManager(requireContext())
+
+            btnAddChange.setOnClickListener {
+                findNavController().navigate(R.id.action_allChangesFragment_to_addChangeFragment)
+            }
         }
     }
 }

@@ -30,7 +30,7 @@
             tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
 
         <TextView
-            android:id="@+id/tvCreateTitle"
+            android:id="@+id/tvCreateCategoryTitle"
             style="@style/allTextWhite"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

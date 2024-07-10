@@ -11,15 +11,6 @@
         android:label="fragment_accounts_container"
         tools:layout="@layout/fragment_accounts_container" />
     <fragment
-        android:id="@+id/addChangeFragment"
-        android:name="ru.itis.looktomoney.fragments.AddChangeFragment"
-        android:label="AddChangeFragment" />
-    <fragment
-        android:id="@+id/allChangesFragment"
-        android:name="ru.itis.looktomoney.fragments.AllChangesFragment"
-        android:label="fragment_all_changes"
-        tools:layout="@layout/fragment_all_changes" />
-    <fragment
         android:id="@+id/categoriesContainerFragment"
         android:name="ru.itis.looktomoney.fragments.categories.CategoriesContainerFragment"
         android:label="fragment_categories_container"
@@ -29,4 +20,9 @@
         android:name="ru.itis.looktomoney.fragments.CategoryInfoFragment"
         android:label="fragment_category_info"
         tools:layout="@layout/fragment_category_info" />
+    <fragment
+        android:id="@+id/changesContainerFragment"
+        android:name="ru.itis.looktomoney.fragments.changes.ChangesContainerFragment"
+        android:label="fragment_changes_container"
+        tools:layout="@layout/fragment_changes_container" />
 </navigation>
