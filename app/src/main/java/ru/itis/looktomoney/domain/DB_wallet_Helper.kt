@@ -4,6 +4,7 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import androidx.core.content.contentValuesOf
 import ru.itis.looktomoney.R
 
 class DB_wallet_Helper(
@@ -41,21 +42,23 @@ class DB_wallet_Helper(
     }
 
     fun plusToWallet(string: String, int : Double){
-        val wallet : Wallet = getByName(string)!!
-        delteByName(string)
-
-        wallet.numb += int
-
-        addWallet(wallet)
+        val wallet: Wallet = getByName(string)!!
+        val db = this.writableDatabase
+        val values = ContentValues()
+        values.put("name", wallet.name)
+        values.put("numb", wallet.numb + int)
+        values.put("icon", wallet.icon)
+        db.update("wallets", values, "name=?", arrayOf(string))
     }
 
     fun minusToWallet(string: String, int : Double){
-        val wallet : Wallet = getByName(string)!!
-        delteByName(string)
-
-        wallet.numb -= int
-
-        addWallet(wallet)
+        val wallet: Wallet = getByName(string)!!
+        val db = this.writableDatabase
+        val values = ContentValues()
+        values.put("name", wallet.name)
+        values.put("numb", wallet.numb - int)
+        values.put("icon", wallet.icon)
+        db.update("wallets", values, "name=?", arrayOf(string))
     }
 
 

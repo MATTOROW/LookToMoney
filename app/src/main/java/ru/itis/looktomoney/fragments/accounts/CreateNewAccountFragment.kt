@@ -61,8 +61,6 @@ class CreateNewAccountFragment : Fragment(R.layout.fragment_create_new_account) 
                 else{
                     db_wallet.addWallet(Wallet(numb, text, polz_icon))
                     Toast.makeText(requireContext(), "Успешно", Toast.LENGTH_SHORT).show()
-                    btnGoBack.callOnClick()
-
                 }
             }
 
